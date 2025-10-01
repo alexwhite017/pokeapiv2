@@ -5,7 +5,6 @@ const BasicData = (props) => {
 
     const evNames = {hp: "HP", attack: "Atk", defense: "Def", speed: "Speed", "special-attack": "Sp.Atk", "special-defense": "Sp.Def"};
     const statColors = {hp: "bg-green-500", attack: "bg-yellow-500", defense: "bg-orange-500", speed: "bg-purple-500", "special-attack": "bg-blue-300", "special-defense": "bg-blue-500"};
-    console.log(species);
 
     const typeColors = {
         normal: 'bg-gray-400',
@@ -28,7 +27,7 @@ const BasicData = (props) => {
         fairy: 'bg-pink-300'
     }
     return (
-        <div className="md:max-w-1/3 bg-violet-500 p-2 rounded-lg w-full flex flex-col gap-1 mb-5">
+        <div className=" bg-violet-500 p-2 rounded-lg w-full flex flex-col gap-1 mb-5 md:col-span-1">
                         {/* Image Section */}
                         <div className="bg-violet-400 w-full flex gap-1 flex-col rounded ">
                             <div className="flex mx-2 mt-2 gap-1">

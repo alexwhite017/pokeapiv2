@@ -10,6 +10,10 @@ const SearchBar = () => {
     return (
         <form onSubmit={(e) => {
             e.preventDefault();
+            if (searchPokemon.trim() === "") {
+                navigate("/");  // Navigate to home if search is empty
+                return;
+            }
             navigate(`/search/${searchPokemon}`);  // Example navigation to a detail page
           }} 
              className="bg-gray-500 rounded shadow-2xl w-auto sm:w-3/4 m-4 p-4 flex flex-col justify-center items-center gap-5" >
