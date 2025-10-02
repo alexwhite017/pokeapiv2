@@ -6,9 +6,11 @@ const LearnSet = ({ poke, type }) => {
     const [ tmDetails, setTmDetails ] = useState([]);
     const [ activeTab, setActiveTab ] = useState(8);
     const [ loading, setLoading ] = useState(true);
+    const [iterationMoves, setIterationMoves] = useState([])
+    console.log(poke);
 
 
-    let genList = ['red-blue', 'gold-silver', 'ruby-sapphire', 'diamond-pearl', 'black-white', 'x-y', 'sun-moon', 'sword-shield', 'scarlet-violet'];
+    let genList = ['red-blue', 'gold-silver', 'firered-leafgreen', 'heartgold-soulsilver', 'black-2-white-2', 'x-y', 'ultra-sun-ultra-moon', 'sword-shield', 'scarlet-violet'];
 
     let gens = [];
 
@@ -22,17 +24,18 @@ const LearnSet = ({ poke, type }) => {
     useEffect(() => {
         if (type === "machine") {
             // eslint-disable-next-line react-hooks/exhaustive-deps
-            moves = poke.moves.filter(move => move.version_group_details.some(vgd => vgd.move_learn_method.name === "machine")).filter(move => move.version_group_details.some(vgd => vgd.version_group.name === genList[activeTab] && vgd.move_learn_method.name === "machine"));
+            moves = poke.moves.filter(move => move.version_group_details.some(vgd => vgd.move_learn_method.name === "machine" && vgd.version_group.name === genList[activeTab]));
             fetchMoveList(moves, type, activeTab+1).then(data => { setTmDetails(data); setLoading(false);  }); 
             fetchMoveList(moves, "data").then(data => { setMoveDetails(data);  });
             
         } else if (type === "level") {
-            moves = poke.moves.filter(move => move.version_group_details.some(vgd => vgd.move_learn_method.name === "level-up")).filter(move => move.version_group_details.some(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[activeTab]))
+            moves = poke.moves.filter(move => move.version_group_details.some(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[activeTab]))
             .sort((a, b) => {
                 const levelA = a.version_group_details.find(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[activeTab]).level_learned_at;
                 const levelB = b.version_group_details.find(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[activeTab]).level_learned_at;
                 return levelA - levelB;
             });
+            setIterationMoves(moves);
             fetchMoveList(moves, "level", activeTab+1).then(data => { setMoveDetails(data); setLoading(false);  });
 
         }
@@ -123,12 +126,6 @@ const LearnSet = ({ poke, type }) => {
         )
 
     } else if (type === "level") {
-     let iterationMoves = poke.moves.filter(move => move.version_group_details.some(vgd => vgd.move_learn_method.name === "level-up")).filter(move => move.version_group_details.some(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[activeTab]))
-                                .sort((a, b) => {
-                                const levelA = a.version_group_details.find(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[activeTab]).level_learned_at;
-                                const levelB = b.version_group_details.find(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[activeTab]).level_learned_at;
-                                return levelA - levelB;
-                            });
 
 
         return (
@@ -141,13 +138,7 @@ const LearnSet = ({ poke, type }) => {
                         <div className={`tab ${activeTab === index ? 'bg-white' : ' hover:bg-green-400'} gen${index + 1} flex-1 bg-[#ACD36C] rounded-t mx-1 md:min-h-6`} key={index} onClick={(e) => {
                             if (activeTab === index) return;
                             e.preventDefault();
-                            iterationMoves = poke.moves.filter(move => move.version_group_details.some(vgd => vgd.move_learn_method.name === "level-up")).filter(move => move.version_group_details.some(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[index+1]))
-                                .sort((a, b) => {
-                                const levelA = a.version_group_details.find(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[activeTab]).level_learned_at;
-                                const levelB = b.version_group_details.find(vgd => vgd.move_learn_method.name === "level-up" && vgd.version_group.name === genList[activeTab]).level_learned_at;
-                                return levelA - levelB;
-                            });
-                            
+                           
                             setActiveTab(index);
                             setLoading(true);
                         }}>
