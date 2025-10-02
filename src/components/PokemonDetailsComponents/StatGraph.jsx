@@ -6,7 +6,7 @@ const StatGraph = (props) => {
     const statBackground = {hp: "bg-green-400", attack: "bg-yellow-400", defense: "bg-orange-400", speed: "bg-purple-400", "special-attack": "bg-blue-200", "special-defense": "bg-blue-400"};
 
     return (
-        <div className="stats w-full border-red-500  bg-red-500 border-2 rounded items-center overflow-hidden md:max-w-full">
+        <div className="stats w-full border-red-500  bg-red-500 border-2 rounded items-center overflow-hidden">
                         <h3 className="text-md font-bold text-center mb-2">Stats</h3>
                         <div className="">
                         {poke.stats.map((stat, index) => (

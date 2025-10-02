@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 import StatGraph from './PokemonDetailsComponents/StatGraph';
 import BasicData from './PokemonDetailsComponents/BasicData';
 import DexEntries from './PokemonDetailsComponents/DexEntries';
+import LearnSet from './PokemonDetailsComponents/LearnSet';
 
 
 const PokemonDetails = () => {
@@ -38,7 +39,8 @@ const PokemonDetails = () => {
                                 <BasicData poke={poke} species={species} />
                                 <div className="md:col-span-2">
                                     <DexEntries species={species} />
-
+                                    <LearnSet poke={poke} type={"level"} />
+                                    <LearnSet poke={poke} type={"machine"} />
                                     <StatGraph poke={poke} />
                                 </div>
                                 

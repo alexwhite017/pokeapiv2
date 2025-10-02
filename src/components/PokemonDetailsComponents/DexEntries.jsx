@@ -39,7 +39,7 @@ const DexEntries = ({ species }) => {
 
 
     return (
-        <div className="entries w-full h-auto bg-red-500 border-blue-500 rounded-2xl border-1 flex flex-col mt-10 p-2 mb-10 md:col-span-2 md:mt-0">
+        <div className="entries w-full h-auto bg-red-500 border-blue-500 rounded-2xl border-1 flex flex-col mt-10 p-2 mb-2 md:col-span-2 md:mt-0">
             <h3 className="text-black font-bold text-center">Pokédex Entries</h3>
             <div className="tabs flex gap-2">
                 {gens.map((gen, index) => (
