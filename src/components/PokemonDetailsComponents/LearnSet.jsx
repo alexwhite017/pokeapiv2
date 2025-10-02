@@ -46,7 +46,7 @@ const LearnSet = ({ poke, type }) => {
     if (type === "machine") {
 
         return (
-            <div className="bg-red-500 flex mb-2 flex-col max-w-[340px] sm:w-full sm:max-w-full rounded">
+            <div className="bg-red-500 flex mb-2 flex-col sm:w-full sm:max-w-full rounded">
                 <div className="header mt-1 mx-1 mb-3 rounded bg-red-300">
                     <h2 className="font-bold text-xl text-center text-black">Technical Machines</h2>
                 </div>
@@ -69,13 +69,13 @@ const LearnSet = ({ poke, type }) => {
                     <table className="w-full bg-white mb-2">
                         <thead className="bg-[#80B9EF] sticky top-0">
                             <tr className="text-black font-bold text-center">
-                                <th className="p  border border-gray-300">#</th>
-                                <th className="p border border-gray-300">Move</th>
-                                <th className="p border border-gray-300">Type</th>
-                                <th className="p border border-gray-300">Category</th>
-                                <th className="p border border-gray-300">Power</th>
-                                <th className="p border border-gray-300">Accuracy</th>
-                                <th className="p border border-gray-300">PP</th>
+                                <th className="px-3 border border-gray-300">#</th>
+                                <th className="px-3 border border-gray-300">Move</th>
+                                <th className="px-3 border border-gray-300">Type</th>
+                                <th className="px-3 border border-gray-300">Category</th>
+                                <th className="px-3 border border-gray-300">Power</th>
+                                <th className="px-3 border border-gray-300">Accuracy</th>
+                                <th className="px-3 border border-gray-300">PP</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -132,7 +132,7 @@ const LearnSet = ({ poke, type }) => {
 
 
         return (
-            <div className="bg-red-500 flex mb-2 flex-col w-full max-w-[340px] overflow-auto box-border sm:w-full sm:max-w-full rounded">
+            <div className="bg-red-500 flex mb-2 flex-col box-border sm:w-full sm:max-w-full rounded">
                 <div className="header mt-1 mx-1 mb-3 rounded bg-red-300">
                     <h2 className="font-bold text-xl text-center text-black">Level-Up Moves</h2>
                 </div>
@@ -162,13 +162,13 @@ const LearnSet = ({ poke, type }) => {
                     <table className=" w-full bg-white mb-2">
                         <thead className="bg-[#80B9EF] sticky top-0">
                             <tr className="text-black font-bold text-center">
-                                <th className="p  border border-gray-300">Level</th>
-                                <th className="p border border-gray-300">Move</th>
-                                <th className="p border border-gray-300">Type</th>
-                                <th className="p border border-gray-300">Category</th>
-                                <th className="p border border-gray-300">Power</th>
-                                <th className="p border border-gray-300">Accuracy</th>
-                                <th className="p border border-gray-300">PP</th>
+                                <th className="px-3 border border-gray-300">Level</th>
+                                <th className="px-3 border border-gray-300">Move</th>
+                                <th className="px-3 border border-gray-300">Type</th>
+                                <th className="px-3 border border-gray-300">Category</th>
+                                <th className="px-3 border border-gray-300">Power</th>
+                                <th className="px-3 border border-gray-300">Accuracy</th>
+                                <th className="px-3 border border-gray-300">PP</th>
                             </tr>
                         </thead>
                         <tbody>

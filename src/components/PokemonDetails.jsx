@@ -37,7 +37,7 @@ const PokemonDetails = () => {
                         pokemonSpeciesData.map((species) => (
                             <div className=" w-full mx-5 h-auto bg-gray-500 flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 gap-4">
                                 <BasicData poke={poke} species={species} />
-                                <div className="md:col-span-2">
+                                <div className="w-full md:col-span-2">
                                     <DexEntries species={species} />
                                     <LearnSet poke={poke} type={"level"} />
                                     <LearnSet poke={poke} type={"machine"} />
