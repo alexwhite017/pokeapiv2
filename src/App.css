@@ -1,5 +1,84 @@
 @import "tailwindcss";
 @source inline("w-[{1..100..1}%]");
+@source inline("bg-{normal,fire,water,electric,grass,ice,fighting,poison,ground,flying,psychic,bug,rock,ghost,dragon,dark,steel,fairy}");
+@source inline("border-{border-normal,border-fire,border-water,border-electric,border-grass,border-ice,border-fighting,border-poison,border-ground,border-flying,border-psychic,border-bug,border-rock,border-ghost,border-dragon,border-dark,border-steel,border-fairy}");
+@source inline("bg-{normal-secondary,fire-secondary,water-secondary,electric-secondary,grass-secondary,ice-secondary,fighting-secondary,poison-secondary,ground-secondary,flying-secondary,psychic-secondary,bug-secondary,rock-secondary,ghost-secondary,dragon-secondary,dark-secondary,steel-secondary,fairy-secondary}");
+
+@source inline("border-{normal,fire,water,electric,grass,ice,fighting,poison,ground,flying,psychic,bug,rock,ghost,dragon,dark,steel,fairy}");
+
+@theme {
+  --color-normal: #a0a19f;
+  --color-normal-secondary: #c1c2c1;
+  --color-border-normal: #e0e0e0;
+
+  --color-fire: #e62729;
+  --color-fire-secondary: #f07374;
+  --color-border-fire: #f5a2a3;
+
+  --color-water: #2880ef;
+  --color-water-secondary: #75acf5;
+  --color-border-water: #a2c2f5;
+
+  --color-electric: #fac100;
+  --color-electric-secondary: #fcd658;
+  --color-border-electric: #fced98;
+
+  --color-grass: #3fa129;
+  --color-grass-secondary: #81c374;
+  --color-border-grass: #b8d9ad;
+
+  --color-ice: #3ecef3;
+  --color-ice-secondary: #81dff7;
+  --color-border-ice: #b8ecf9;
+
+  --color-fighting: #ff8001;
+  --color-fighting-secondary: #ffac59;
+  --color-border-fighting: #f5a2a3;
+
+  --color-poison: #9141cb;
+  --color-poison-secondary: #b884dd;
+  --color-border-poison: #d1a2f5;
+
+  --color-ground: #925122;
+  --color-ground-secondary: #b88e70;
+  --color-border-ground: #d1b8a2;
+
+  --color-flying: #80b9ef;
+  --color-flying-secondary: #aed2f5;
+  --color-border-flying: #d1e2f5;
+
+  --color-psychic: #ef4179;
+  --color-psychic-secondary: #f584a8;
+  --color-border-psychic: #f5a2a3;
+
+  --color-bug: #91a119;
+  --color-bug-secondary: #b8c26a;
+  --color-border-bug: #d1d9a2;
+
+  --color-rock: #afa982;
+  --color-rock-secondary: #ccc7ad;
+  --color-border-rock: #e2e0d1;
+
+  --color-ghost: #704170;
+  --color-ghost-secondary: #a284a2;
+  --color-border-ghost: #c2a2c2;
+
+  --color-dragon: #4f60e1;
+  --color-dragon-secondary: #8d98ec;
+  --color-border-dragon: #a37d00;
+
+  --color-dark: #624d4f;
+  --color-dark-secondary: #998b8c;
+  --color-border-dark: #c2b8b8;
+
+  --color-steel: #5fa1b8;
+  --color-steel-secondary: #98c2d1;
+  --color-border-steel: #c2d1d5;
+
+  --color-fairy: #ef70ef;
+  --color-fairy-secondary: #f5a2f5;
+  --color-border-fairy: #f5d1f5;
+}
 
 #root {
   max-width: 1280px;
