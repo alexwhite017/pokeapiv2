@@ -89,23 +89,20 @@ const Results = (props) => {
     return (
       <div className="flex flex-col justify-center items-center mt-20 ">
         <SearchBar />
-        <div className="flex flex-wrap justify-center items-center">
+        <div className="flex flex-wrap justify-center items-center mx-4">
           {pokemonData &&
             pokemonData.map((poke, index) =>
               poke.url.split("/")[6] > 1025 ? null : (
                 <Link
                   key={index}
                   to={`/details/${poke.name}`}
-                  className="h-1/2 w-1/2 sm:w-1/3 sm:h-1/3 lg:h-1/4 lg:w-1/4"
+                  className="h-auto w-full sm:w-1/3 sm:h-1/3 lg:h-1/4 lg:w-1/4"
                 >
                   <div
                     key={index}
-                    className="border p-4 m-2 rounded shadow-lg flex flex-col items-center justify-center"
+                    className="border p-4 m-2 gap-2 justify-between rounded shadow-lg flex flex-row-reverse sm:flex-col"
                   >
-                    <h2 className="text-lg font-bold mb-2 capitalize">
-                      {poke.name}
-                    </h2>
-                    <div className="w-1/2 h-1/2 mb-2">
+                    <div className="w-1/2 h-1/2 mb-2 m-auto hidden sm:block">
                       <img
                         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
                           poke.url.split("/")[6]
@@ -114,8 +111,24 @@ const Results = (props) => {
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <div className="text-sm text-gray-600">
-                      Dex#: {poke.url.split("/")[6]}
+                    <img
+                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+                        poke.url.split("/")[6]
+                      }.png`}
+                      alt={poke.name}
+                      className="aspect-square object-contain sm:hidden"
+                    />
+                    <div className="flex flex-row-reverse justify-center items-center gap-2 sm:flex-col">
+                      <h2 className="text-lg flex items-center sm:font-bold sm:mb-2 capitalize">
+                        {poke.name}
+                      </h2>
+
+                      <div className="text-sm text-gray-600 hidden sm:block">
+                        Dex#: {poke.url.split("/")[6]}
+                      </div>
+                      <span className="flex font-bold items-center text-gray-600 sm:hidden">
+                        #{poke.url.split("/")[6]}
+                      </span>
                     </div>
                   </div>
                 </Link>

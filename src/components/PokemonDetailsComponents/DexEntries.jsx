@@ -38,6 +38,8 @@ const DexEntries = ({ species, poke }) => {
     "legends-arceus": "bg-yellow-600",
     "lets-go-pikachu": "bg-[#F5DA26]",
     "lets-go-eevee": "bg-[#C08040]",
+    scarlet: "bg-[#D62828]",
+    violet: "bg-[#3F37C9]",
   };
 
   const gens = [];
