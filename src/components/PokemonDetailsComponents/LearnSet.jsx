@@ -113,9 +113,9 @@ const LearnSet = ({ poke, type }) => {
                 <th className="px-3 border border-gray-300">#</th>
                 <th className="px-3 border border-gray-300">Move</th>
                 <th className="px-3 border border-gray-300">Type</th>
-                <th className="px-3 border border-gray-300">Category</th>
-                <th className="px-3 border border-gray-300">Power</th>
-                <th className="px-3 border border-gray-300">Accuracy</th>
+                <th className="px-3 border border-gray-300">Cat.</th>
+                <th className="px-3 border border-gray-300">Pwr.</th>
+                <th className="px-3 border border-gray-300">Acc.</th>
                 <th className="px-3 border border-gray-300">PP</th>
               </tr>
             </thead>
@@ -149,18 +149,44 @@ const LearnSet = ({ poke, type }) => {
                         {currentMove.name.replace(/-/g, " ")}
                       </td>
                       <td className="p-1 border border-gray-300">
-                        {currentMove.type ? currentMove.type.name : "???"}
+                        {currentMove.type ? (
+                          <span
+                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                          >
+                            {currentMove.type.name}
+                          </span>
+                        ) : (
+                          "???"
+                        )}
                       </td>
                       <td className="p-1 border border-gray-300">
-                        {currentMove.damage_class
-                          ? currentMove.damage_class.name
-                          : "???"}
+                        {currentMove.damage_class ? (
+                          <span
+                            className={`${
+                              currentMove.damage_class.name === "physical"
+                                ? "bg-[#EB5529]"
+                                : currentMove.damage_class.name === "special"
+                                ? "bg-[#375AB2]"
+                                : "bg-[#828282]"
+                            } text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                          >
+                            {currentMove.damage_class.name}
+                          </span>
+                        ) : (
+                          <span
+                            className={`bg-[#828282] text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                          >
+                            Status
+                          </span>
+                        )}
                       </td>
                       <td className="p-1 border border-gray-300">
                         {currentMove.power ? currentMove.power : "-"}
                       </td>
                       <td className="p-1 border border-gray-300">
-                        {currentMove.accuracy ? currentMove.accuracy : "-"}
+                        {currentMove.accuracy
+                          ? currentMove.accuracy + "%"
+                          : "-"}
                       </td>
                       <td className="p-1 border border-gray-300">
                         {currentMove.pp ? currentMove.pp : "???"}
@@ -177,7 +203,7 @@ const LearnSet = ({ poke, type }) => {
   } else if (type === "level") {
     return (
       <div
-        className={`bg-${pokeType} border-border-${pokeType} border-1 flex mb-5 flex-col box-border sm:w-full sm:max-w-full rounded`}
+        className={`bg-${pokeType} border-border-${pokeType} border-1 flex mb-5 flex-col sm:w-full sm:max-w-full rounded`}
       >
         <div
           className={`header mt-1 mx-1 mb-3 rounded bg-${pokeType}-secondary`}
@@ -223,9 +249,9 @@ const LearnSet = ({ poke, type }) => {
                 <th className="px-3 border border-gray-300">Level</th>
                 <th className="px-3 border border-gray-300">Move</th>
                 <th className="px-3 border border-gray-300">Type</th>
-                <th className="px-3 border border-gray-300">Category</th>
-                <th className="px-3 border border-gray-300">Power</th>
-                <th className="px-3 border border-gray-300">Accuracy</th>
+                <th className="px-3 border border-gray-300">Cat.</th>
+                <th className="px-3 border border-gray-300">Pwr.</th>
+                <th className="px-3 border border-gray-300">Acc.</th>
                 <th className="px-3 border border-gray-300">PP</th>
               </tr>
             </thead>
@@ -267,14 +293,38 @@ const LearnSet = ({ poke, type }) => {
                       <td className="p-1 border border-gray-300">
                         {/* Fetch and display move type */}
                         {/* Placeholder: Replace with actual type fetching logic */}
-                        {currentMove.type ? currentMove.type.name : "???"}
+                        {currentMove.type ? (
+                          <span
+                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                          >
+                            {currentMove.type.name}
+                          </span>
+                        ) : (
+                          "???"
+                        )}
                       </td>
                       <td className="p-1 border border-gray-300">
                         {/* Fetch and display move category */}
                         {/* Placeholder: Replace with actual category fetching logic */}
-                        {currentMove.damage_class
-                          ? currentMove.damage_class.name
-                          : "???"}
+                        {currentMove.damage_class ? (
+                          <span
+                            className={`${
+                              currentMove.damage_class.name === "physical"
+                                ? "bg-[#EB5529]"
+                                : currentMove.damage_class.name === "special"
+                                ? "bg-[#375AB2]"
+                                : "bg-[#828282]"
+                            } text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                          >
+                            {currentMove.damage_class.name}
+                          </span>
+                        ) : (
+                          <span
+                            className={`bg-[#828282] text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                          >
+                            Status
+                          </span>
+                        )}
                       </td>
                       <td className="p-1 border border-gray-300">
                         {/* Fetch and display move power */}
@@ -284,7 +334,9 @@ const LearnSet = ({ poke, type }) => {
                       <td className="p-1 border border-gray-300">
                         {/* Fetch and display move accuracy */}
                         {/* Placeholder: Replace with actual accuracy fetching logic */}
-                        {currentMove.accuracy ? currentMove.accuracy : "-"}
+                        {currentMove.accuracy
+                          ? currentMove.accuracy + "%"
+                          : "-"}
                       </td>
                       <td className="p-1 border border-gray-300">
                         {/* Fetch and display move PP */}

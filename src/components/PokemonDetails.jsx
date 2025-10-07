@@ -12,9 +12,8 @@ const PokemonDetails = () => {
   const [pokemonSpeciesData, setPokemonSpeciesData] = useState([]);
 
   const { pokemon } = useParams();
-
   useEffect(() => {
-    fetchPokemon(pokemon).then((data) => {
+    fetchPokemon("pokemon", pokemon).then((data) => {
       setPokemonData([data[0]]);
       setPokemonSpeciesData([data[1]]);
     });
@@ -27,7 +26,7 @@ const PokemonDetails = () => {
         pokemonSpeciesData &&
         pokemonData.map((poke) =>
           pokemonSpeciesData.map((species) => (
-            <div className=" w-full mx-5 h-auto bg-gray-500 flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4">
+            <div className=" w-full mx-5 h-auto bg-white flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4">
               <BasicData poke={poke} species={species} />
               <div className="w-full md:col-span-2">
                 <DexEntries species={species} poke={poke} />

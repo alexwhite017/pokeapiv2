@@ -1,8 +1,18 @@
-async function fetchPokemon(pokemon) {
+async function fetchPokemon(sort, pokemon) {
   let pokedata = [];
   if (pokemon === "") {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon?limit=1025`
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return await response.json();
+  }
+
+  if (sort === "type") {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/type/${pokemon}?limit=1025`
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");
