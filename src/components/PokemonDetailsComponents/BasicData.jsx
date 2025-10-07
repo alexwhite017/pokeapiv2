@@ -1,4 +1,6 @@
+import { useState } from "react";
 const BasicData = ({ poke, species }) => {
+  const [activeTab, setActiveTab] = useState(0);
   const type = poke.types[0].type.name;
 
   const evNames = {
@@ -34,12 +36,41 @@ const BasicData = ({ poke, species }) => {
             #{poke.id}
           </h2>
         </div>
-        <div className="bg-white rounded mx-2 mb-2">
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.id}.png`}
-            alt={poke.name}
-            className="object-contain"
-          />
+        <div>
+          <div className="tabs text-center mx-2 flex gap-2">
+            <div
+              className={`tab ${
+                activeTab === 0 ? "bg-white" : " hover:bg-green-400"
+              }  flex-1 bg-[#ACD36C] rounded-t md:min-h-6`}
+              onClick={() => setActiveTab(0)}
+            >
+              Official
+            </div>
+            <div
+              className={`tab ${
+                activeTab === 2 ? "bg-white" : " hover:bg-green-400"
+              }  flex-1 bg-[#ACD36C] rounded-t md:min-h-6`}
+              onClick={() => setActiveTab(2)}
+            >
+              Shiny
+            </div>
+          </div>
+          <div className="bg-white rounded-b mx-2 mb-2">
+            <img
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.id}.png`}
+              alt={poke.name}
+              className={`object-contain ${
+                activeTab === 0 ? "block" : "hidden"
+              }`}
+            />
+            <img
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${poke.id}.png`}
+              alt={poke.name}
+              className={`object-contain ${
+                activeTab === 2 ? "block" : "hidden"
+              }`}
+            />
+          </div>
         </div>
       </div>
       {/* Typing Section */}
