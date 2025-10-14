@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   let navigate = useNavigate();
 
   const [searchPokemon, setSearchPokemon] = useState("");
+  const [active1, setActive1] = useState(null);
+  const [active2, setActive2] = useState(null);
   const types = [
     "normal",
     "fighting",
@@ -25,6 +27,16 @@ const SearchBar = () => {
     "dark",
     "fairy",
   ];
+
+  useEffect(() => {
+    if (props.page === "Search") {
+      setActive1(null);
+      setActive2(null);
+    } else if (props.page === "Sort") {
+      setActive1(props.typing?.split("+")[0]);
+      setActive2(props.typing?.split("+")[1]);
+    }
+  }, [props.typing, props.page]);
 
   return (
     <form
@@ -60,9 +72,23 @@ const SearchBar = () => {
                 key={type}
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate(`/search/${type}`);
+                  if (!active1 && !active2) {
+                    navigate(`/sort/${type}`);
+                  } else if (active1 === type && !active2) {
+                    navigate(`/`);
+                  } else if (active1 && !active2) {
+                    navigate(`/sort/${active1}+${type}`);
+                  } else if (active2 === type) {
+                    navigate(`/sort/${active1}`);
+                  } else if (active1 === type && active2) {
+                    navigate(`/sort/${active2}`);
+                  }
                 }}
-                className={`bg-${type} text-white font-bold px-1 rounded text-sm min-w-15 text-center capitalize hover:scale-105 transition-transform cursor-pointer`}
+                className={`bg-${type} ${
+                  active1 === type || active2 === type
+                    ? "ring-2 ring-black"
+                    : ""
+                } text-white font-bold px-1 rounded text-sm min-w-15 text-center capitalize hover:scale-105 transition-transform cursor-pointer`}
               >
                 {type}
               </button>

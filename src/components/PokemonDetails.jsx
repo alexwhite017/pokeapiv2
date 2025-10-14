@@ -21,7 +21,7 @@ const PokemonDetails = () => {
 
   return (
     <div className="flex flex-col justify-center items-center mt-20">
-      <SearchBar />
+      <SearchBar pokemon={pokemon} />
       {pokemonData &&
         pokemonSpeciesData &&
         pokemonData.map((poke) =>
