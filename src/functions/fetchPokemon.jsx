@@ -1,5 +1,7 @@
 async function fetchPokemon(sort, pokemon) {
   let pokedata = [];
+
+  //Home Page Fetch
   if (pokemon === "") {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon?limit=1025`
@@ -9,7 +11,7 @@ async function fetchPokemon(sort, pokemon) {
     }
     return await response.json();
   }
-
+  // Type Sorting Fetch
   if (sort === "type") {
     let type1 = pokemon.toLowerCase().split("+")[0];
 
@@ -40,6 +42,7 @@ async function fetchPokemon(sort, pokemon) {
       data1.pokemon = combined;
     }
     return data1;
+    // Search Pokemon Fetch
   } else if (sort === "search") {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemon}?limit=1025`
@@ -50,6 +53,7 @@ async function fetchPokemon(sort, pokemon) {
     return await response.json();
   }
 
+  // Individual Pokemon Details Fetch
   const response = await fetch(
     `https://pokeapi.co/api/v2/pokemon/${pokemon}?limit=1025`
   );
@@ -65,6 +69,16 @@ async function fetchPokemon(sort, pokemon) {
     throw new Error("Network response was not ok");
   }
   pokedata.push(await response2.json());
+
+  const response3 = await fetch(
+    `https://pokeapi.co/api/v2/evolution-chain/${pokedata[1].evolution_chain.url
+      .split("/")
+      .slice(-2, -1)}`
+  );
+  if (!response3.ok) {
+    throw new Error("Network response was not ok");
+  }
+  pokedata.push(await response3.json());
 
   return pokedata;
 }

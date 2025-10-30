@@ -1,66 +1,11 @@
 import { useState } from "react";
+import { gameColors } from "../../data/gameColors";
+import { genRanges } from "../../data/genRanges";
 
 const DexEntries = ({ species, poke }) => {
   const type = poke.types[0].type.name;
-  const gameColors = {
-    red: "bg-red-500",
-    blue: "bg-blue-500",
-    yellow: "bg-yellow-500",
-    gold: "bg-yellow-300",
-    silver: "bg-gray-300",
-    crystal: "bg-cyan-300",
-    ruby: "bg-red-600",
-    sapphire: "bg-blue-600",
-    emerald: "bg-green-600",
-    firered: "bg-red-400",
-    leafgreen: "bg-green-400",
-    diamond: "bg-blue-400",
-    pearl: "bg-pink-400",
-    platinum: "bg-[#A0A08D]",
-    heartgold: "bg-yellow-400",
-    soulsilver: "bg-[#AAB9CF]",
-    black: "bg-black",
-    white: "bg-white",
-    "black-2": "bg-black",
-    "white-2": "bg-white",
-    x: "bg-blue-300",
-    y: "bg-pink-300",
-    "omega-ruby": "bg-red-700",
-    "alpha-sapphire": "bg-blue-700",
-    sun: "bg-yellow-400",
-    moon: "bg-purple-400",
-    "ultra-sun": "bg-yellow-500",
-    "ultra-moon": "bg-purple-500",
-    sword: "bg-[#00A1E9]",
-    shield: "bg-[#BF014F]",
-    "brilliant-diamond": "bg-blue-500",
-    "shining-pearl": "bg-pink-500",
-    "legends-arceus": "bg-yellow-600",
-    "lets-go-pikachu": "bg-[#F5DA26]",
-    "lets-go-eevee": "bg-[#C08040]",
-    scarlet: "bg-[#D62828]",
-    violet: "bg-[#3F37C9]",
-  };
 
   const gens = [];
-  const genRanges = [
-    ["red", "blue", "yellow"], // Gen 1
-    ["gold", "silver", "crystal"], // Gen 2
-    ["ruby", "sapphire", "emerald", "firered", "leafgreen"], // Gen 3
-    ["diamond", "pearl", "platinum", "heartgold", "soulsilver"], // Gen 4
-    ["black", "white", "black-2", "white-2"], // Gen 5
-    ["x", "y", "omega-ruby", "alpha-sapphire"], // Gen 6
-    [
-      "sun",
-      "moon",
-      "ultra-sun",
-      "ultra-moon",
-      "lets-go-pikachu",
-      "lets-go-eevee",
-    ], // Gen 7
-    ["sword", "shield", "brilliant-diamond", "shining-pearl", "legends-arceus"], // Gen 8
-    ["scarlet", "violet"], // Gen 9
-  ];
 
   const [activeTab, setActiveTab] = useState(0); // Default to Gen 1
 

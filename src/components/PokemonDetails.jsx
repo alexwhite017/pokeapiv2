@@ -10,9 +10,14 @@ import LearnSet from "./PokemonDetailsComponents/LearnSet";
 const PokemonDetails = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonSpeciesData, setPokemonSpeciesData] = useState([]);
+  const [allPokemonData, setAllPokemonData] = useState([]);
 
   const { pokemon } = useParams();
   useEffect(() => {
+    fetchPokemon("pokemon", "").then((data) => {
+      setAllPokemonData(data.results);
+    });
+
     fetchPokemon("pokemon", pokemon).then((data) => {
       setPokemonData([data[0]]);
       setPokemonSpeciesData([data[1]]);
@@ -21,12 +26,19 @@ const PokemonDetails = () => {
 
   return (
     <div className="flex flex-col justify-center items-center mt-20">
-      <SearchBar pokemon={pokemon} />
+      <SearchBar
+        pokemon={pokemon}
+        page="details"
+        allPokemonData={allPokemonData}
+      />
       {pokemonData &&
         pokemonSpeciesData &&
         pokemonData.map((poke) =>
           pokemonSpeciesData.map((species) => (
-            <div className=" w-full mx-5 h-auto bg-white flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4">
+            <div
+              key={poke.id}
+              className=" w-full mx-5 h-auto bg-white flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4"
+            >
               <BasicData poke={poke} species={species} />
               <div className="w-full md:col-span-2">
                 <DexEntries species={species} poke={poke} />

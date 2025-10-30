@@ -1,24 +1,9 @@
 import { useState } from "react";
+import { evNames } from "../../data/evNames";
+import { statColors } from "../../data/statColors";
 const BasicData = ({ poke, species }) => {
   const [activeTab, setActiveTab] = useState(0);
   const type = poke.types[0].type.name;
-
-  const evNames = {
-    hp: "HP",
-    attack: "Atk",
-    defense: "Def",
-    speed: "Speed",
-    "special-attack": "Sp.Atk",
-    "special-defense": "Sp.Def",
-  };
-  const statColors = {
-    hp: "bg-green-500",
-    attack: "bg-yellow-500",
-    defense: "bg-orange-500",
-    speed: "bg-purple-500",
-    "special-attack": "bg-blue-300",
-    "special-defense": "bg-blue-500",
-  };
 
   return (
     <div

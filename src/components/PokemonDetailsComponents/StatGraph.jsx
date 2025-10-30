@@ -1,29 +1,9 @@
+import { statColors } from "../../data/statColors";
+import { statBackground } from "../../data/statBackground";
+import { statNames } from "../../data/statNames";
+
 const StatGraph = ({ poke }) => {
   const type = poke.types[0].type.name;
-  const statNames = {
-    hp: "HP",
-    attack: "Attack",
-    defense: "Defense",
-    speed: "Speed",
-    "special-attack": "Sp. Atk",
-    "special-defense": "Sp. Def",
-  };
-  const statColors = {
-    hp: "bg-green-500",
-    attack: "bg-yellow-500",
-    defense: "bg-orange-500",
-    speed: "bg-purple-500",
-    "special-attack": "bg-blue-300",
-    "special-defense": "bg-blue-500",
-  };
-  const statBackground = {
-    hp: "bg-green-400",
-    attack: "bg-yellow-400",
-    defense: "bg-orange-400",
-    speed: "bg-purple-400",
-    "special-attack": "bg-blue-200",
-    "special-defense": "bg-blue-400",
-  };
 
   return (
     <div
