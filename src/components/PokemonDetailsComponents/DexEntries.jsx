@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { gameColors } from "../../data/gameColors";
 import { genRanges } from "../../data/genRanges";
+import ContainerSkeleton from "../containerSkeleton";
 
 const DexEntries = ({ species, poke }) => {
   const type = poke.types[0].type.name;
@@ -29,14 +30,7 @@ const DexEntries = ({ species, poke }) => {
   }
 
   return (
-    <div
-      className={`entries w-full h-auto bg-${type} border-border-${type} rounded-2xl border-1 flex flex-col p-2 mb-5 md:col-span-2 md:mt-0`}
-    >
-      <div className={`header mt-1 mx-1 mb-3 rounded bg-${type}-secondary`}>
-        <h2 className="font-bold text-xl text-center text-black">
-          Pokedex Entries
-        </h2>
-      </div>
+    <ContainerSkeleton title="Pokedex Entries" type={type}>
       <div className="tabs flex gap-2">
         {gens.map((gen, index) => (
           <div
@@ -79,7 +73,7 @@ const DexEntries = ({ species, poke }) => {
           )}
         </div>
       </div>
-    </div>
+    </ContainerSkeleton>
   );
 };
 export default DexEntries;

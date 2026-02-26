@@ -45,6 +45,16 @@ const PokemonDetails = () => {
                 <LearnSet poke={poke} type={"level"} />
                 <LearnSet poke={poke} type={"machine"} />
                 <StatGraph poke={poke} />
+                <div className="evolutions">
+                  <h2 className="font-bold text-xl text-center text-black mb-2">
+                    Evolutions
+                  </h2>
+                  <div className="bg-white w-full h-auto p-2 rounded-2xl flex justify-center items-center">
+                    <p className="text-black font-bold">
+                      Evolution data not implemented yet.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           ))

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import fetchMoveList from "../../functions/fetchMoveList";
+import ContainerSkeleton from "../containerSkeleton";
 
 const LearnSet = ({ poke, type }) => {
   const [moveDetails, setMoveDetails] = useState([]);
@@ -66,16 +67,7 @@ const LearnSet = ({ poke, type }) => {
 
   if (type === "machine") {
     return (
-      <div
-        className={`bg-${pokeType} border-border-${pokeType} border-1 flex mb-5 flex-col sm:w-full sm:max-w-full rounded`}
-      >
-        <div
-          className={`header mt-1 mx-1 mb-3 rounded bg-${pokeType}-secondary`}
-        >
-          <h2 className="font-bold text-xl text-center text-black">
-            Technical Machines
-          </h2>
-        </div>
+      <ContainerSkeleton title="Technical Machines" type={pokeType}>
         <select
           id="gen-select"
           className="mb-3 p-1 text-center rounded text-black w-1/2 mx-auto bg-white"
@@ -198,20 +190,11 @@ const LearnSet = ({ poke, type }) => {
             </tbody>
           </table>
         </div>
-      </div>
+      </ContainerSkeleton>
     );
   } else if (type === "level") {
     return (
-      <div
-        className={`bg-${pokeType} border-border-${pokeType} border-1 flex mb-5 flex-col sm:w-full sm:max-w-full rounded`}
-      >
-        <div
-          className={`header mt-1 mx-1 mb-3 rounded bg-${pokeType}-secondary`}
-        >
-          <h2 className="font-bold text-xl text-center text-black">
-            Level-Up Moves
-          </h2>
-        </div>
+      <ContainerSkeleton title="Level-Up Moves" type={pokeType}>
         <select
           id="gen-select"
           className="mb-3 p-1 text-center rounded text-black w-1/2 mx-auto bg-white"
@@ -350,7 +333,7 @@ const LearnSet = ({ poke, type }) => {
             </tbody>
           </table>
         </div>
-      </div>
+      </ContainerSkeleton>
     );
   }
 };

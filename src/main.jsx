@@ -4,15 +4,12 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter, Route, Routes } from "react-router";
 
-import Details from "./Details.jsx";
-import Sort from "./Sort.jsx";
-
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/details/:pokemon" element={<Details />} />
-      <Route path="/sort/:typing" element={<Sort />} />
+      <Route path="/" element={<App page="Home" />} />
+      <Route path="/details/:pokemon" element={<App page="Details" />} />
+      <Route path="/sort/:typing" element={<App page="Sort" />} />
     </Routes>
   </BrowserRouter>
 );

@@ -1,8 +1,9 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Results from "./components/Results.jsx";
+import PokemonDetails from "./components/PokemonDetails";
 
-function App() {
+function App(props) {
   return (
     <>
       <header>
@@ -10,7 +11,9 @@ function App() {
       </header>
 
       <main>
-        <Results name="Home" />
+        {(props.page === "Details" && <PokemonDetails />) || (
+          <Results name={props.page} />
+        )}
       </main>
     </>
   );
