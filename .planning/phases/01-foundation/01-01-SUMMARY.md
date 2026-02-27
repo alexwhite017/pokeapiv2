@@ -67,7 +67,7 @@ Each task was committed atomically:
 1. **Task 1: Fix `:root` background in `index.css`** - `e0bf8af` (feat)
 2. **Task 2: Add dark surface tokens to `App.css` `@theme` block** - `9999712` (feat)
 
-**Plan metadata:** (docs commit follows)
+**Plan metadata:** `13d9942` (docs: complete plan)
 
 ## Files Created/Modified
 
@@ -96,6 +96,15 @@ None - no external service configuration required.
 
 - Dark surface token foundation is complete; Plan B (component dark migration) can now consume `bg-surface-*` and `text-text-*` utilities
 - No blockers; all 7 tokens verified present, build passes
+
+## Self-Check: PASSED
+
+- src/index.css: FOUND
+- src/App.css: FOUND
+- .planning/phases/01-foundation/01-01-SUMMARY.md: FOUND
+- Commit e0bf8af: FOUND
+- Commit 9999712: FOUND
+- Commit 13d9942: FOUND
 
 ---
 *Phase: 01-foundation*
