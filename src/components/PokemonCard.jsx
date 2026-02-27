@@ -15,6 +15,14 @@ const PokemonCard = ({ name, id, primaryType, secondaryType }) => {
           #{String(id).padStart(3, '0')}
         </span>
 
+        {/* Dex number watermark — large, bottom-right, partially clipped */}
+        <span
+          className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 text-[7rem] font-black leading-none text-white/15 select-none pointer-events-none tabular-nums"
+          aria-hidden="true"
+        >
+          #{String(id).padStart(3, '0')}
+        </span>
+
         {/* Artwork area */}
         <div className="flex-1 flex items-center justify-center p-3 min-h-0">
           <img
