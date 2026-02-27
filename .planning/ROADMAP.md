@@ -60,7 +60,12 @@ Plans:
   2. Stat bars communicate quality with color: red for low stats, through teal for exceptional stats
   3. Stat bars have consistent height, rounded corners, clear labels, and numeric values with adequate row spacing
   4. Move tables use dark rows, a type-accented header, and pill-shaped type badges in type cells
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Full-page type gradient and NavBar type tint (DETAIL-01)
+- [ ] 03-02-PLAN.md — Stat bar threshold colors and polish (DETAIL-02, DETAIL-03)
+- [ ] 03-03-PLAN.md — Move table headers, dark rows, and pill badge harmonization (DETAIL-04)
 
 ### Phase 4: Polish
 **Goal**: The app earns "enthusiast-grade Pokédex" status through craft details — loading states, watermarks, and Pokémon-to-Pokémon navigation that make it feel complete and premium
@@ -81,5 +86,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-02-27 |
 | 2. Grid Cards | 2/2 | Complete   | 2026-02-27 |
-| 3. Detail Page | 0/TBD | Not started | - |
+| 3. Detail Page | 0/3 | Not started | - |
 | 4. Polish | 0/TBD | Not started | - |
