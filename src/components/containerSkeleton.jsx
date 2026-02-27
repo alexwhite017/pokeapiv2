@@ -1,12 +1,10 @@
 const ContainerSkeleton = ({ title, type, children }) => {
   return (
-    <div
-      className={`entries w-full h-auto bg-${type} border-border-${type} rounded-2xl border-1 flex flex-col p-2 mb-5 md:col-span-2 md:mt-0`}
-    >
-      <div className={`header mt-1 mx-1 mb-3 rounded bg-${type}-secondary`}>
-        <h2 className="font-bold text-xl text-center text-text-primary">{title}</h2>
+    <div className="w-full bg-surface-raised rounded-2xl overflow-hidden mb-5 md:col-span-2 md:mt-0">
+      <div className={`bg-${type} px-4 py-2.5`}>
+        <h2 className="font-bold text-lg text-white">{title}</h2>
       </div>
-      {children}
+      <div className="p-3">{children}</div>
     </div>
   );
 };

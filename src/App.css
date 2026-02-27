@@ -89,6 +89,27 @@
   --color-text-primary:    #f4f4f5;  /* zinc-100 — main readable text */
   --color-text-secondary:  #a1a1aa;  /* zinc-400 — subdued labels */
   --color-text-muted:      #71717a;  /* zinc-500 — very subdued, metadata */
+
+  /* === Shimmer === */
+  --color-shimmer-base:      #27272a;
+  --color-shimmer-highlight: #3f3f46;
+}
+
+[data-theme="light"] {
+  /* === Light Surface Palette === */
+  --color-surface-base:    #f4f4f5;  /* zinc-100 — page background */
+  --color-surface-raised:  #ffffff;  /* white — card/panel backgrounds */
+  --color-surface-inset:   #e4e4e7;  /* zinc-200 — recessed areas, inputs */
+  --color-surface-border:  #d4d4d8;  /* zinc-300 — subtle dividers */
+
+  /* === Text Scale === */
+  --color-text-primary:    #18181b;  /* zinc-900 — main readable text */
+  --color-text-secondary:  #52525b;  /* zinc-600 — subdued labels */
+  --color-text-muted:      #a1a1aa;  /* zinc-400 — very subdued, metadata */
+
+  /* === Shimmer === */
+  --color-shimmer-base:      #e4e4e7;
+  --color-shimmer-highlight: #f4f4f5;
 }
 
 #root {
@@ -104,9 +125,9 @@
 .animate-shimmer {
   background: linear-gradient(
     90deg,
-    #27272a 25%,
-    #3f3f46 50%,
-    #27272a 75%
+    var(--color-shimmer-base) 25%,
+    var(--color-shimmer-highlight) 50%,
+    var(--color-shimmer-base) 75%
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s ease-in-out infinite;

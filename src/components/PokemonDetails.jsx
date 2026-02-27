@@ -121,14 +121,7 @@ const PokemonDetails = () => {
   };
 
   return (
-    <div
-      className="w-full min-h-screen flex flex-col items-center pt-20"
-      style={{
-        background: primaryType
-          ? `linear-gradient(to bottom, var(--color-${primaryType}), #18181b)`
-          : "#18181b",
-      }}
-    >
+    <div className="w-full min-h-screen flex flex-col items-center pt-20 bg-surface-base">
       <SearchBar
         pokemon={pokemon}
         page="details"
@@ -146,7 +139,14 @@ const PokemonDetails = () => {
                 onNavigate={handleNavigate}
               />
               {/* Main card */}
-              <div className="w-full mx-5 h-auto bg-black/40 flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4">
+              <div
+                className="w-full px-2 sm:px-4 h-auto flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4"
+                style={{
+                  background: primaryType
+                    ? `linear-gradient(160deg, color-mix(in srgb, var(--color-${primaryType}) 20%, var(--color-surface-raised)), var(--color-surface-raised))`
+                    : "var(--color-surface-raised)",
+                }}
+              >
                 <BasicData poke={poke} species={species} />
                 <div className="w-full md:col-span-2">
                   <DexEntries species={species} poke={poke} />

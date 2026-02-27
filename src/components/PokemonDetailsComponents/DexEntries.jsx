@@ -34,9 +34,11 @@ const DexEntries = ({ species, poke }) => {
       <div className="tabs flex gap-2">
         {gens.map((gen, index) => (
           <div
-            className={`tab ${
-              activeTab === index ? "bg-surface-raised" : " hover:bg-surface-inset"
-            } gen${index + 1} flex-1 bg-[#ACD36C] rounded-t md:min-h-6`}
+            className={`tab cursor-pointer gen${index + 1} flex-1 rounded-t md:min-h-6 transition-colors ${
+              activeTab === index
+                ? `bg-${type} text-white`
+                : "bg-surface-inset text-text-secondary hover:bg-surface-raised"
+            }`}
             key={index}
             onClick={() => setActiveTab(index)}
           >
@@ -44,7 +46,7 @@ const DexEntries = ({ species, poke }) => {
           </div>
         ))}
       </div>
-      <div className="gen1 bg-[#ACD36C] py-2 rounded-b-2xl">
+      <div className="bg-surface-inset py-2 rounded-b-xl">
         <div className="dex-entries flex flex-col bg-surface-raised p-2 rounded-2xl mb-5 mx-1">
           {activeGenEntries.length === 0 ? (
             <p className="text-text-primary text-center font-bold">

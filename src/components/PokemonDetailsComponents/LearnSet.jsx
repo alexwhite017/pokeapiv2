@@ -70,7 +70,7 @@ const LearnSet = ({ poke, type }) => {
       <ContainerSkeleton title="Technical Machines" type={pokeType}>
         <select
           id="gen-select"
-          className="mb-3 p-1 text-center rounded text-text-primary w-1/2 mx-auto bg-surface-raised"
+          className="mb-3 p-1.5 text-center rounded-lg text-text-primary w-1/2 mx-auto bg-surface-inset border border-surface-border focus:outline-none focus:ring-2 focus:ring-surface-border"
           onChange={(e) => {
             e.preventDefault();
             setSelectedGen(e.target.value);
@@ -197,7 +197,7 @@ const LearnSet = ({ poke, type }) => {
       <ContainerSkeleton title="Level-Up Moves" type={pokeType}>
         <select
           id="gen-select"
-          className="mb-3 p-1 text-center rounded text-text-primary w-1/2 mx-auto bg-surface-raised"
+          className="mb-3 p-1.5 text-center rounded-lg text-text-primary w-1/2 mx-auto bg-surface-inset border border-surface-border focus:outline-none focus:ring-2 focus:ring-surface-border"
           onChange={(e) => {
             e.preventDefault();
             setSelectedGen(e.target.value);

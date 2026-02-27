@@ -11,51 +11,45 @@ const StatGraph = ({ poke }) => {
     return () => clearTimeout(timer);
   }, []);
 
+  const total = poke.stats.reduce((t, s) => t + s.base_stat, 0);
+
   return (
-    <div
-      className={`stats w-full border-border-${type} bg-${type} border-1 rounded-xl items-center overflow-hidden`}
-    >
-      <div className={`bg-${type}-secondary m-1 rounded-xl`}>
-        <div
-          className={`header border-b-1 border-${type} rounded-t-xl bg-${type}-secondary`}
-        >
-          <h2 className="font-bold text-xl text-center text-text-primary">Stats</h2>
-        </div>
-        <div className={`bg-${type}-secondary`}>
-          {poke.stats.map((stat, index) => (
-            <div key={index} className="flex items-center py-2 px-2 gap-3">
-              <div className="w-[30%] flex justify-between text-text-primary text-sm">
-                <span className="font-semibold">{statNames[stat.stat.name]}</span>
-                <span className="text-text-secondary">{stat.base_stat}</span>
-              </div>
-              <div className="flex-1 bg-black/20 rounded-full h-3">
-                <div
-                  className={`${getStatBarColor(stat.base_stat)} rounded-full h-3`}
-                  style={{
-                    width: animated
-                      ? `${((stat.base_stat / 255) * 100).toFixed(0)}%`
-                      : "0%",
-                    transition: "width 300ms ease-out",
-                  }}
-                />
-              </div>
+    <div className="w-full bg-surface-raised rounded-2xl overflow-hidden mb-5">
+      <div className={`bg-${type} px-4 py-2.5`}>
+        <h2 className="font-bold text-lg text-white">Stats</h2>
+      </div>
+      <div className="p-3">
+        {poke.stats.map((stat, index) => (
+          <div key={index} className="flex items-center py-1.5 gap-3">
+            <div className="w-[30%] flex justify-between text-sm">
+              <span className="font-semibold text-text-primary">
+                {statNames[stat.stat.name]}
+              </span>
+              <span className="text-text-secondary tabular-nums">
+                {stat.base_stat}
+              </span>
             </div>
-          ))}
-        </div>
-        <div
-          className={`flex h-6 border-${type} border-t-1 rounded-b-xl bg-${type}-secondary`}
-        >
-          <div
-            className={`statName flex flex-1.5 sm:flex-1 w-[35%] border-${type} border-r-2 px-2 text-text-primary`}
-          >
-            <div className="flex-2 justify-start font-bold text-sm">Total:</div>
-            <div className="flex-1 text-right text-sm">
-              <p>
-                {poke.stats.reduce((total, stat) => total + stat.base_stat, 0)}
-              </p>
+            <div className="flex-1 bg-surface-inset rounded-full h-3">
+              <div
+                className={`${getStatBarColor(stat.base_stat)} rounded-full h-3`}
+                style={{
+                  width: animated
+                    ? `${((stat.base_stat / 255) * 100).toFixed(0)}%`
+                    : "0%",
+                  transition: "width 300ms ease-out",
+                }}
+              />
             </div>
           </div>
-          <div className="flex-3"></div>
+        ))}
+        <div className="flex items-center gap-3 border-t border-surface-border mt-1 pt-2">
+          <div className="w-[30%] flex justify-between text-sm">
+            <span className="font-bold text-text-primary">Total</span>
+            <span className="font-bold text-text-primary tabular-nums">
+              {total}
+            </span>
+          </div>
+          <div className="flex-1" />
         </div>
       </div>
     </div>
