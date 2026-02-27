@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-27)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-27 — Roadmap created; all 16 v1 requirements mapped across 4 phases
+Plan: 1 of TBD in current phase
+Status: In progress
+Last activity: 2026-02-27 — Completed plan 01-01 (Dark Base & Design Tokens)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 5%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: —
+- Total plans completed: 1
+- Average duration: ~1 min
+- Total execution time: ~1 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 1. Foundation | 1 | ~1 min | ~1 min |
 
 **Recent Trend:**
-- Last 5 plans: —
+- Last 5 plans: 01-01 (~1 min)
 - Trend: —
 
 *Updated after each plan completion*
@@ -45,6 +45,9 @@ Recent decisions affecting current work:
 - [Init]: Dark theme as global base — user explicitly chose this direction
 - [Init]: Type color backgrounds on cards — user selected this card style
 - [Research]: Build order is non-negotiable — tokens before components, list page before detail page
+- [01-01]: Dark-always approach — no dark: class variants, no prefers-color-scheme; app is unconditionally dark
+- [01-01]: Zinc palette for surfaces — zinc-900/800/700/600 for surface hierarchy, zinc-100/400/500 for text scale
+- [01-01]: Semantic token naming — surface-base/raised/inset/border and text-primary/secondary/muted
 
 ### Pending Todos
 
@@ -58,5 +61,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Roadmap created, STATE.md initialized. Ready to run plan-phase for Phase 1.
+Stopped at: Completed 01-01-PLAN.md (Dark Base & Design Tokens)
 Resume file: None

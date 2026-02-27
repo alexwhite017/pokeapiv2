@@ -9,9 +9,9 @@ Requirements for the UI overhaul. Each maps to roadmap phases.
 
 ### Foundation
 
-- [ ] **FOUND-01**: All pages use a dark global background (`bg-zinc-900`) with off-white text
+- [x] **FOUND-01**: All pages use a dark global background (`bg-zinc-900`) with off-white text
 - [ ] **FOUND-02**: All hardcoded `bg-white` / `text-black` instances replaced with dark theme tokens
-- [ ] **FOUND-03**: `@source inline()` registry extended to cover all dynamic Tailwind class patterns used in the redesign
+- [x] **FOUND-03**: `@source inline()` registry extended to cover all dynamic Tailwind class patterns used in the redesign
 - [ ] **FOUND-04**: Stat bar width implementation replaced with inline styles (fixes silent production build bug)
 
 ### Grid Cards
@@ -65,9 +65,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
 | FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Complete |
 | FOUND-04 | Phase 1 | Pending |
 | CARD-01 | Phase 2 | Pending |
 | CARD-02 | Phase 2 | Pending |
