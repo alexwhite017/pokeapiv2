@@ -78,6 +78,17 @@
   --color-fairy: #ef70ef;
   --color-fairy-secondary: #f5a2f5;
   --color-border-fairy: #f5d1f5;
+
+  /* === Dark Surface Palette === */
+  --color-surface-base:    #18181b;  /* zinc-900 — page background */
+  --color-surface-raised:  #27272a;  /* zinc-800 — card/panel backgrounds */
+  --color-surface-inset:   #3f3f46;  /* zinc-700 — recessed areas, inputs */
+  --color-surface-border:  #52525b;  /* zinc-600 — subtle dividers */
+
+  /* === Text Scale === */
+  --color-text-primary:    #f4f4f5;  /* zinc-100 — main readable text */
+  --color-text-secondary:  #a1a1aa;  /* zinc-400 — subdued labels */
+  --color-text-muted:      #71717a;  /* zinc-500 — very subdued, metadata */
 }
 
 #root {
