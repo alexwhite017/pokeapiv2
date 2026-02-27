@@ -13,7 +13,7 @@ const StatGraph = ({ poke }) => {
         <div
           className={`header border-b-1 border-${type} rounded-t-xl bg-${type}-secondary`}
         >
-          <h2 className="font-bold text-xl text-center text-black">Stats</h2>
+          <h2 className="font-bold text-xl text-center text-text-primary">Stats</h2>
         </div>
         <div className={`bg-${type}-secondary`}>
           {poke.stats.map((stat, index) => (
@@ -24,7 +24,7 @@ const StatGraph = ({ poke }) => {
               }`}
             >
               <div
-                className={`statName flex flex-1.5 sm:flex-1 w-[35%] border-${type} border-r-2 px-2 text-black`}
+                className={`statName flex flex-1.5 sm:flex-1 w-[35%] border-${type} border-r-2 px-2 text-text-primary`}
               >
                 <div className="flex-2 justify-start font-bold text-sm">
                   {`${statNames[stat.stat.name]}`}:
@@ -38,10 +38,8 @@ const StatGraph = ({ poke }) => {
                 <div
                   className={`${
                     statColors[stat.stat.name]
-                  } my-[1px] border-1 rounded border-gray-500 ml-0.5 h-5 w-[${(
-                    (stat.base_stat / 255) *
-                    100
-                  ).toFixed(0)}%]`}
+                  } my-[1px] border-1 rounded border-surface-border ml-0.5 h-5`}
+                  style={{ width: `${((stat.base_stat / 255) * 100).toFixed(0)}%` }}
                 ></div>
               </div>
             </div>
@@ -51,7 +49,7 @@ const StatGraph = ({ poke }) => {
           className={`flex h-6 border-${type} border-t-1 rounded-b-xl bg-${type}-secondary`}
         >
           <div
-            className={`statName flex flex-1.5 sm:flex-1 w-[35%] border-${type} border-r-2 px-2 text-black`}
+            className={`statName flex flex-1.5 sm:flex-1 w-[35%] border-${type} border-r-2 px-2 text-text-primary`}
           >
             <div className="flex-2 justify-start font-bold text-sm">Total:</div>
             <div className="flex-1 text-right text-sm">
