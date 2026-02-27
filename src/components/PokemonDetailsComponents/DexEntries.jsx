@@ -14,7 +14,7 @@ const DexEntries = ({ species, poke }) => {
 
   for (let i = 1; i <= 9; i++) {
     gens.push(
-      <h4 className="text-black font-bold text-sm text-center">{i}</h4>
+      <h4 className="text-text-primary font-bold text-sm text-center">{i}</h4>
     );
   }
 
@@ -34,9 +34,11 @@ const DexEntries = ({ species, poke }) => {
       <div className="tabs flex gap-2">
         {gens.map((gen, index) => (
           <div
-            className={`tab ${
-              activeTab === index ? "bg-white" : " hover:bg-green-400"
-            } gen${index + 1} flex-1 bg-[#ACD36C] rounded-t md:min-h-6`}
+            className={`tab cursor-pointer gen${index + 1} flex-1 rounded-t md:min-h-6 transition-colors ${
+              activeTab === index
+                ? `bg-${type} text-white`
+                : "bg-surface-inset text-text-secondary hover:bg-surface-raised"
+            }`}
             key={index}
             onClick={() => setActiveTab(index)}
           >
@@ -44,10 +46,10 @@ const DexEntries = ({ species, poke }) => {
           </div>
         ))}
       </div>
-      <div className="gen1 bg-[#ACD36C] py-2 rounded-b-2xl">
-        <div className="dex-entries flex flex-col bg-white p-2 rounded-2xl mb-5 mx-1">
+      <div className="bg-surface-inset py-2 rounded-b-xl">
+        <div className="dex-entries flex flex-col bg-surface-raised p-2 rounded-2xl mb-5 mx-1">
           {activeGenEntries.length === 0 ? (
-            <p className="text-black text-center font-bold">
+            <p className="text-text-primary text-center font-bold">
               No entries available for this generation.
             </p>
           ) : (
@@ -58,14 +60,14 @@ const DexEntries = ({ species, poke }) => {
                     entry.version.name === "black" ||
                     entry.version.name === "black-2"
                       ? "text-white"
-                      : "text-black"
+                      : "text-text-primary"
                   } font-bold flex justify-center items-center flex-1 min-w-20 text-center ${
-                    gameColors[entry.version.name] || "bg-gray-500"
+                    gameColors[entry.version.name] || "bg-surface-inset"
                   } rounded-2xl capitalize text-sm md:text-base md:min-w-22`}
                 >
                   {entry.version.name.replace(/-/g, " ")}
                 </h3>
-                <p className="text-black p-1 border-1 rounded flex-6 border-gray-500">
+                <p className="text-text-primary p-1 border-1 rounded flex-6 border-surface-border">
                   {entry.flavor_text.replace(/\f/g, " ")}
                 </p>
               </div>

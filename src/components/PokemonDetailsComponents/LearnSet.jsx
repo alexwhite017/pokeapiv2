@@ -14,7 +14,7 @@ const LearnSet = ({ poke, type }) => {
 
   for (let i = 1; i <= 9; i++) {
     gens.push(
-      <h4 className="text-black font-bold text-sm text-center">{i}</h4>
+      <h4 className="text-text-primary font-bold text-sm text-center">{i}</h4>
     );
   }
 
@@ -70,7 +70,7 @@ const LearnSet = ({ poke, type }) => {
       <ContainerSkeleton title="Technical Machines" type={pokeType}>
         <select
           id="gen-select"
-          className="mb-3 p-1 text-center rounded text-black w-1/2 mx-auto bg-white"
+          className="mb-3 p-1.5 text-center rounded-lg text-text-primary w-1/2 mx-auto bg-surface-inset border border-surface-border focus:outline-none focus:ring-2 focus:ring-surface-border"
           onChange={(e) => {
             e.preventDefault();
             setSelectedGen(e.target.value);
@@ -99,28 +99,28 @@ const LearnSet = ({ poke, type }) => {
         </select>
 
         <div className="mx-1 mb-1 max-h-100 overflow-y-auto overflow-x-auto">
-          <table className="w-full bg-white mb-2">
-            <thead className="bg-[#80B9EF] sticky top-0">
-              <tr className="text-black font-bold text-center">
-                <th className="px-3 border border-gray-300">#</th>
-                <th className="px-3 border border-gray-300">Move</th>
-                <th className="px-3 border border-gray-300">Type</th>
-                <th className="px-3 border border-gray-300">Cat.</th>
-                <th className="px-3 border border-gray-300">Pwr.</th>
-                <th className="px-3 border border-gray-300">Acc.</th>
-                <th className="px-3 border border-gray-300">PP</th>
+          <table className="w-full bg-surface-raised mb-2">
+            <thead className={`bg-${pokeType}-secondary sticky top-0`}>
+              <tr className="text-text-primary font-bold text-center">
+                <th className="px-3 border border-surface-border">#</th>
+                <th className="px-3 border border-surface-border">Move</th>
+                <th className="px-3 border border-surface-border">Type</th>
+                <th className="px-3 border border-surface-border">Cat.</th>
+                <th className="px-3 border border-surface-border">Pwr.</th>
+                <th className="px-3 border border-surface-border">Acc.</th>
+                <th className="px-3 border border-surface-border">PP</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan="7" className="text-center text-black">
+                  <td colSpan="7" className="text-center text-text-primary">
                     Loading...
                   </td>
                 </tr>
               ) : !tmDetails.length ? (
                 <tr>
-                  <td colSpan="7" className="text-center text-black font-bold">
+                  <td colSpan="7" className="text-center text-text-primary font-bold">
                     No moves available for this game.
                   </td>
                 </tr>
@@ -132,18 +132,18 @@ const LearnSet = ({ poke, type }) => {
                   return (
                     <tr
                       key={index}
-                      className="text-center text-black even:bg-gray-200 odd:bg-gray-100"
+                      className="text-center text-text-primary even:bg-surface-inset odd:bg-surface-raised"
                     >
-                      <td className="p-1 border border-gray-300 uppercase">
+                      <td className="p-1 border border-surface-border uppercase">
                         {moveEntry.item.name ? moveEntry.item.name : "???"}
                       </td>
-                      <td className="p-1 border border-gray-300 capitalize">
+                      <td className="p-1 border border-surface-border capitalize">
                         {currentMove.name.replace(/-/g, " ")}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {currentMove.type ? (
                           <span
-                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded-full text-sm my-2 mx-1 min-w-15 text-center capitalize`}
                           >
                             {currentMove.type.name}
                           </span>
@@ -151,7 +151,7 @@ const LearnSet = ({ poke, type }) => {
                           "???"
                         )}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {currentMove.damage_class ? (
                           <span
                             className={`${
@@ -172,15 +172,15 @@ const LearnSet = ({ poke, type }) => {
                           </span>
                         )}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {currentMove.power ? currentMove.power : "-"}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {currentMove.accuracy
                           ? currentMove.accuracy + "%"
                           : "-"}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {currentMove.pp ? currentMove.pp : "???"}
                       </td>
                     </tr>
@@ -197,7 +197,7 @@ const LearnSet = ({ poke, type }) => {
       <ContainerSkeleton title="Level-Up Moves" type={pokeType}>
         <select
           id="gen-select"
-          className="mb-3 p-1 text-center rounded text-black w-1/2 mx-auto bg-white"
+          className="mb-3 p-1.5 text-center rounded-lg text-text-primary w-1/2 mx-auto bg-surface-inset border border-surface-border focus:outline-none focus:ring-2 focus:ring-surface-border"
           onChange={(e) => {
             e.preventDefault();
             setSelectedGen(e.target.value);
@@ -226,28 +226,28 @@ const LearnSet = ({ poke, type }) => {
         </select>
 
         <div className="mx-1 mb-1 max-h-100 overflow-y-auto overflow-x-auto">
-          <table className=" w-full bg-white mb-2">
-            <thead className="bg-[#80B9EF] sticky top-0">
-              <tr className="text-black font-bold text-center">
-                <th className="px-3 border border-gray-300">Level</th>
-                <th className="px-3 border border-gray-300">Move</th>
-                <th className="px-3 border border-gray-300">Type</th>
-                <th className="px-3 border border-gray-300">Cat.</th>
-                <th className="px-3 border border-gray-300">Pwr.</th>
-                <th className="px-3 border border-gray-300">Acc.</th>
-                <th className="px-3 border border-gray-300">PP</th>
+          <table className=" w-full bg-surface-raised mb-2">
+            <thead className={`bg-${pokeType}-secondary sticky top-0`}>
+              <tr className="text-text-primary font-bold text-center">
+                <th className="px-3 border border-surface-border">Level</th>
+                <th className="px-3 border border-surface-border">Move</th>
+                <th className="px-3 border border-surface-border">Type</th>
+                <th className="px-3 border border-surface-border">Cat.</th>
+                <th className="px-3 border border-surface-border">Pwr.</th>
+                <th className="px-3 border border-surface-border">Acc.</th>
+                <th className="px-3 border border-surface-border">PP</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan="7" className="text-center text-black">
+                  <td colSpan="7" className="text-center text-text-primary">
                     Loading...
                   </td>
                 </tr>
               ) : !moveDetails.length ? (
                 <tr>
-                  <td colSpan="7" className="text-center text-black font-bold">
+                  <td colSpan="7" className="text-center text-text-primary font-bold">
                     No moves available for this game.
                   </td>
                 </tr>
@@ -259,9 +259,9 @@ const LearnSet = ({ poke, type }) => {
                   return (
                     <tr
                       key={index}
-                      className="text-center text-black even:bg-gray-200 odd:bg-gray-100"
+                      className="text-center text-text-primary even:bg-surface-inset odd:bg-surface-raised"
                     >
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {
                           moveEntry.version_group_details.find(
                             (vgd) =>
@@ -270,15 +270,15 @@ const LearnSet = ({ poke, type }) => {
                           ).level_learned_at
                         }
                       </td>
-                      <td className="p-1 border border-gray-300 capitalize">
+                      <td className="p-1 border border-surface-border capitalize">
                         {currentMove.name.replace(/-/g, " ")}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {/* Fetch and display move type */}
                         {/* Placeholder: Replace with actual type fetching logic */}
                         {currentMove.type ? (
                           <span
-                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded-full text-sm my-2 mx-1 min-w-15 text-center capitalize`}
                           >
                             {currentMove.type.name}
                           </span>
@@ -286,7 +286,7 @@ const LearnSet = ({ poke, type }) => {
                           "???"
                         )}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {/* Fetch and display move category */}
                         {/* Placeholder: Replace with actual category fetching logic */}
                         {currentMove.damage_class ? (
@@ -309,19 +309,19 @@ const LearnSet = ({ poke, type }) => {
                           </span>
                         )}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {/* Fetch and display move power */}
                         {/* Placeholder: Replace with actual power fetching logic */}
                         {currentMove.power ? currentMove.power : "-"}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {/* Fetch and display move accuracy */}
                         {/* Placeholder: Replace with actual accuracy fetching logic */}
                         {currentMove.accuracy
                           ? currentMove.accuracy + "%"
                           : "-"}
                       </td>
-                      <td className="p-1 border border-gray-300">
+                      <td className="p-1 border border-surface-border">
                         {/* Fetch and display move PP */}
                         {/* Placeholder: Replace with actual PP fetching logic */}
                         {currentMove.pp ? currentMove.pp : "???"}

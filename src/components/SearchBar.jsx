@@ -14,38 +14,60 @@ const SearchBar = (props) => {
     setActive2(props.typing?.split("+")[1]);
   }, [props.typing]);
 
+  const TypeFilters = () => (
+    <div className="flex flex-wrap justify-center gap-1.5">
+      {types.map((type) => (
+        <button
+          type="button"
+          key={type}
+          onClick={(e) => {
+            e.preventDefault();
+            if (!active1 && !active2) {
+              navigate(`/sort/${type}`);
+            } else if (active1 === type && !active2) {
+              navigate(`/`);
+            } else if (active1 && !active2) {
+              navigate(`/sort/${active1}+${type}`);
+            } else if (active2 === type) {
+              navigate(`/sort/${active1}`);
+            } else if (active1 === type && active2) {
+              navigate(`/sort/${active2}`);
+            }
+          }}
+          className={`bg-${type} text-white text-xs font-semibold px-2.5 py-1 rounded-full capitalize transition-transform hover:scale-105 cursor-pointer ${
+            active1 === type || active2 === type
+              ? "ring-2 ring-white ring-offset-1 ring-offset-surface-raised"
+              : "opacity-75 hover:opacity-100"
+          }`}
+        >
+          {type}
+        </button>
+      ))}
+    </div>
+  );
+
   if (props.page === "details") {
     return (
       <form
         onSubmit={(e) => {
-          // Example navigation to a detail page
           e.preventDefault();
           navigate(`/`);
-          // Example navigation to a detail page
         }}
-        className="bg-white rounded w-auto  max-w-150 m-auto p-4 flex flex-col justify-center items-center gap-5"
+        className="w-full max-w-xl mx-auto px-4"
       >
-        <div className="bg-red-500 shadow-lg m-3 w-full h-auto flex flex-col">
-          <div className="bg-red-500 w-full h-auto border-b-2 border-black shadow-2xl flex ">
-            <div className="bg-blue-500 border-1 border-white rounded-full m-5 h-10 w-10"></div>
-
-            <div className="bg-red-500 border-1 border-white rounded-full m-3 h-5 w-5"></div>
-            <div className="bg-yellow-500 border-1 border-white rounded-full m-3 h-5 w-5"></div>
-            <div className="bg-green-500 border-1 border-white rounded-full m-3 h-5 w-5"></div>
-          </div>
-          <div className="bg-white m-5 flex flex-col justify-center relative items-center">
+        <div className="bg-surface-raised border border-surface-border rounded-2xl p-5 shadow-xl flex flex-col gap-4">
+          <div className="relative">
             <input
               onChange={(e) =>
                 setInternalSearchQuery(e.target.value.replace(/\s+/g, "-"))
               }
               type="text"
-              placeholder="Enter a Pokemon name"
+              placeholder="Search Pokémon..."
               value={internalSearchQuery.replace(/-/g, " ")}
-              className="my-5 p-2 w-3/4 min-w-30 border border-gray-400 bg-gray-200 rounded text-black"
+              className="w-full px-4 py-2.5 bg-surface-inset border border-surface-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
             />
             {internalSearchQuery && (
-              <div className="searchResults z-10 absolute top-15 bg-white border border-gray-300 rounded-b shadow-lg w-3/4 overflow-auto max-h-60">
-                {/* Render search results here */}
+              <div className="absolute top-full mt-1 z-10 w-full bg-surface-raised border border-surface-border rounded-xl shadow-2xl overflow-auto max-h-60">
                 {props.allPokemonData
                   .filter((poke) =>
                     poke.name
@@ -60,60 +82,22 @@ const SearchBar = (props) => {
                         setInternalSearchQuery("");
                         navigate(`/details/${poke.name.toLowerCase()}`);
                       }}
-                      className="w-full text-left px-2 py-2 hover:bg-gray-100"
+                      className="w-full text-left px-4 py-2 text-text-primary hover:bg-surface-inset transition-colors capitalize"
                     >
-                      {poke.name.includes("-")
-                        ? poke.name
-                            .split("-")
-                            .map(
-                              (part) =>
-                                part.charAt(0).toUpperCase() +
-                                part.slice(1).toLowerCase()
-                            )
-                            .join(" ")
-                        : poke.name.charAt(0).toUpperCase() +
-                          poke.name.slice(1).toLowerCase()}
+                      {poke.name.replace(/-/g, " ")}
                     </button>
                   ))}
               </div>
             )}
-
-            <div className="type-container flex flex-wrap mb-5 justify-center items-center gap-2">
-              {types.map((type) => (
-                <button
-                  type="button"
-                  key={type}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (!active1 && !active2) {
-                      navigate(`/sort/${type}`);
-                    } else if (active1 === type && !active2) {
-                      navigate(`/`);
-                    } else if (active1 && !active2) {
-                      navigate(`/sort/${active1}+${type}`);
-                    } else if (active2 === type) {
-                      navigate(`/sort/${active1}`);
-                    } else if (active1 === type && active2) {
-                      navigate(`/sort/${active2}`);
-                    }
-                  }}
-                  className={`bg-${type} ${
-                    active1 === type || active2 === type
-                      ? "ring-2 ring-black"
-                      : ""
-                  } text-white font-bold px-1 rounded text-sm min-w-15 text-center capitalize hover:scale-105 transition-transform cursor-pointer`}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
           </div>
+
+          <TypeFilters />
 
           <button
             type="submit"
-            className=" mx-auto mb-5 p-1 w-1/3 border-white border-2 bg-green-500 text-black rounded"
+            className="w-full py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl transition-colors cursor-pointer"
           >
-            Search
+            All Pokémon
           </button>
         </div>
       </form>
@@ -123,67 +107,22 @@ const SearchBar = (props) => {
   return (
     <form
       onSubmit={(e) => {
-        // Example navigation to a detail page
         e.preventDefault();
         navigate(`/`);
-        // Example navigation to a detail page
       }}
-      className="bg-white rounded w-auto  max-w-150 m-auto p-4 flex flex-col justify-center items-center gap-5"
+      className="w-full max-w-xl mx-auto px-4"
     >
-      <div className="bg-red-500 shadow-lg m-3 w-full h-auto flex flex-col">
-        <div className="bg-red-500 w-full h-auto border-b-2 border-black shadow-2xl flex ">
-          <div className="bg-blue-500 border-1 border-white rounded-full m-5 h-10 w-10"></div>
+      <div className="bg-surface-raised border border-surface-border rounded-2xl p-5 shadow-xl flex flex-col gap-4">
+        <input
+          onChange={(e) =>
+            props.setSearchQuery(e.target.value.replace(/\s+/g, "-"))
+          }
+          type="text"
+          placeholder="Search Pokémon..."
+          className="w-full px-4 py-2.5 bg-surface-inset border border-surface-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+        />
 
-          <div className="bg-red-500 border-1 border-white rounded-full m-3 h-5 w-5"></div>
-          <div className="bg-yellow-500 border-1 border-white rounded-full m-3 h-5 w-5"></div>
-          <div className="bg-green-500 border-1 border-white rounded-full m-3 h-5 w-5"></div>
-        </div>
-        <div className="bg-white m-5 flex flex-col justify-center items-center">
-          <input
-            onChange={(e) =>
-              props.setSearchQuery(e.target.value.replace(/\s+/g, "-"))
-            }
-            type="text"
-            placeholder="Enter a Pokemon name"
-            className="my-5 p-2 w-3/4 min-w-30 border border-gray-400 bg-gray-200 rounded text-black"
-          />
-          <div className="type-container flex flex-wrap mb-5 justify-center items-center gap-2">
-            {types.map((type) => (
-              <button
-                type="button"
-                key={type}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (!active1 && !active2) {
-                    navigate(`/sort/${type}`);
-                  } else if (active1 === type && !active2) {
-                    navigate(`/`);
-                  } else if (active1 && !active2) {
-                    navigate(`/sort/${active1}+${type}`);
-                  } else if (active2 === type) {
-                    navigate(`/sort/${active1}`);
-                  } else if (active1 === type && active2) {
-                    navigate(`/sort/${active2}`);
-                  }
-                }}
-                className={`bg-${type} ${
-                  active1 === type || active2 === type
-                    ? "ring-2 ring-black"
-                    : ""
-                } text-white font-bold px-1 rounded text-sm min-w-15 text-center capitalize hover:scale-105 transition-transform cursor-pointer`}
-              >
-                {type}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <button
-          type="submit"
-          className=" mx-auto mb-5 p-1 w-1/3 border-white border-2 bg-green-500 text-black rounded"
-        >
-          Search
-        </button>
+        <TypeFilters />
       </div>
     </form>
   );

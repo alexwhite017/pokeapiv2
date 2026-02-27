@@ -1,66 +1,55 @@
-import { statColors } from "../../data/statColors";
-import { statBackground } from "../../data/statBackground";
+import { useState, useEffect } from "react";
+import { getStatBarColor } from "../../data/statColors";
 import { statNames } from "../../data/statNames";
 
 const StatGraph = ({ poke }) => {
   const type = poke.types[0].type.name;
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimated(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const total = poke.stats.reduce((t, s) => t + s.base_stat, 0);
 
   return (
-    <div
-      className={`stats w-full border-border-${type} bg-${type} border-1 rounded-xl items-center overflow-hidden`}
-    >
-      <div className={`bg-${type}-secondary m-1 rounded-xl`}>
-        <div
-          className={`header border-b-1 border-${type} rounded-t-xl bg-${type}-secondary`}
-        >
-          <h2 className="font-bold text-xl text-center text-black">Stats</h2>
-        </div>
-        <div className={`bg-${type}-secondary`}>
-          {poke.stats.map((stat, index) => (
-            <div
-              key={index}
-              className={`flex h-6 border-${type} border-y-1 ${
-                statBackground[stat.stat.name]
-              }`}
-            >
-              <div
-                className={`statName flex flex-1.5 sm:flex-1 w-[35%] border-${type} border-r-2 px-2 text-black`}
-              >
-                <div className="flex-2 justify-start font-bold text-sm">
-                  {`${statNames[stat.stat.name]}`}:
-                </div>
-                <div className="flex-1 text-right text-sm">
-                  <p>{stat.base_stat}</p>
-                </div>
-              </div>
-
-              <div className="flex-3">
-                <div
-                  className={`${
-                    statColors[stat.stat.name]
-                  } my-[1px] border-1 rounded border-gray-500 ml-0.5 h-5 w-[${(
-                    (stat.base_stat / 255) *
-                    100
-                  ).toFixed(0)}%]`}
-                ></div>
-              </div>
+    <div className="w-full bg-surface-raised rounded-2xl overflow-hidden mb-5">
+      <div className={`bg-${type} px-4 py-2.5`}>
+        <h2 className="font-bold text-lg text-white">Stats</h2>
+      </div>
+      <div className="p-3">
+        {poke.stats.map((stat, index) => (
+          <div key={index} className="flex items-center py-1.5 gap-3">
+            <div className="w-[30%] flex justify-between text-sm">
+              <span className="font-semibold text-text-primary">
+                {statNames[stat.stat.name]}
+              </span>
+              <span className="text-text-secondary tabular-nums">
+                {stat.base_stat}
+              </span>
             </div>
-          ))}
-        </div>
-        <div
-          className={`flex h-6 border-${type} border-t-1 rounded-b-xl bg-${type}-secondary`}
-        >
-          <div
-            className={`statName flex flex-1.5 sm:flex-1 w-[35%] border-${type} border-r-2 px-2 text-black`}
-          >
-            <div className="flex-2 justify-start font-bold text-sm">Total:</div>
-            <div className="flex-1 text-right text-sm">
-              <p>
-                {poke.stats.reduce((total, stat) => total + stat.base_stat, 0)}
-              </p>
+            <div className="flex-1 bg-surface-inset rounded-full h-3">
+              <div
+                className={`${getStatBarColor(stat.base_stat)} rounded-full h-3`}
+                style={{
+                  width: animated
+                    ? `${((stat.base_stat / 255) * 100).toFixed(0)}%`
+                    : "0%",
+                  transition: "width 300ms ease-out",
+                }}
+              />
             </div>
           </div>
-          <div className="flex-3"></div>
+        ))}
+        <div className="flex items-center gap-3 border-t border-surface-border mt-1 pt-2">
+          <div className="w-[30%] flex justify-between text-sm">
+            <span className="font-bold text-text-primary">Total</span>
+            <span className="font-bold text-text-primary tabular-nums">
+              {total}
+            </span>
+          </div>
+          <div className="flex-1" />
         </div>
       </div>
     </div>
