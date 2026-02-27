@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-02-27)
 ## Current Position
 
 Phase: 4 of 4 (Polish)
-Plan: 1 of 3 in current phase
-Status: Plan 04-01 complete
-Last activity: 2026-02-27 — Completed plan 04-01 (Dex Number Watermark on Grid Cards)
+Plan: 2 of 3 in current phase
+Status: Plan 04-02 complete
+Last activity: 2026-02-27 — Completed plan 04-02 (Skeleton Loading Cards)
 
-Progress: [███████░░░] 70%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
@@ -54,6 +54,7 @@ Progress: [███████░░░] 70%
 | Phase 03-detail-page P02 | 4 | 2 tasks | 2 files |
 | Phase 03-detail-page P03 | 1 | 2 tasks | 2 files |
 | Phase 04-polish P01 | 2 | 1 task | 1 file |
+| Phase 04-polish P02 | 1 | 2 tasks | 3 files |
 | Phase 04-polish P03 | 2 | 1 tasks | 1 files |
 
 ## Accumulated Context
@@ -90,6 +91,9 @@ Recent decisions affecting current work:
 - [Phase 04-01]: translate-x-1/4 translate-y-1/4 on watermark span creates partial clip at overflow-hidden card edge for jersey-number aesthetic
 - [Phase 04-polish]: PokemonNav as inline component in same file — no separate file needed for single-use nav widget
 - [Phase 04-polish]: opacity-40 pointer-events-none for edge IDs #001/#1025 — stable layout, no reflow
+- [Phase 04-02]: 24 skeleton cards chosen to fill xl breakpoint viewport (6 cols x 4 rows), works at all narrower breakpoints
+- [Phase 04-02]: animate-shimmer as global CSS utility class — keeps keyframe in one place, avoids Tailwind JIT purge
+- [Phase 04-02]: Neutral zinc-800/700 colors for skeletons — type is unknown at load time
 
 ### Pending Todos
 
@@ -97,10 +101,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None — Phase 3 plan 03 complete, DETAIL-04 satisfied.
+None — Phase 4 plan 02 complete, POLISH-02 satisfied.
 
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 04-01-PLAN.md (Dex Number Watermark on Grid Cards)
+Stopped at: Completed 04-02-PLAN.md (Skeleton Loading Cards)
 Resume file: None
