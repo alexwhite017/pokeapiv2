@@ -100,7 +100,7 @@ const LearnSet = ({ poke, type }) => {
 
         <div className="mx-1 mb-1 max-h-100 overflow-y-auto overflow-x-auto">
           <table className="w-full bg-surface-raised mb-2">
-            <thead className="bg-[#80B9EF] sticky top-0">
+            <thead className={`bg-${pokeType}-secondary sticky top-0`}>
               <tr className="text-text-primary font-bold text-center">
                 <th className="px-3 border border-surface-border">#</th>
                 <th className="px-3 border border-surface-border">Move</th>
@@ -143,7 +143,7 @@ const LearnSet = ({ poke, type }) => {
                       <td className="p-1 border border-surface-border">
                         {currentMove.type ? (
                           <span
-                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded-full text-sm my-2 mx-1 min-w-15 text-center capitalize`}
                           >
                             {currentMove.type.name}
                           </span>
@@ -227,7 +227,7 @@ const LearnSet = ({ poke, type }) => {
 
         <div className="mx-1 mb-1 max-h-100 overflow-y-auto overflow-x-auto">
           <table className=" w-full bg-surface-raised mb-2">
-            <thead className="bg-[#80B9EF] sticky top-0">
+            <thead className={`bg-${pokeType}-secondary sticky top-0`}>
               <tr className="text-text-primary font-bold text-center">
                 <th className="px-3 border border-surface-border">Level</th>
                 <th className="px-3 border border-surface-border">Move</th>
@@ -278,7 +278,7 @@ const LearnSet = ({ poke, type }) => {
                         {/* Placeholder: Replace with actual type fetching logic */}
                         {currentMove.type ? (
                           <span
-                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+                            className={`bg-${currentMove.type.name} text-white font-bold px-1 rounded-full text-sm my-2 mx-1 min-w-15 text-center capitalize`}
                           >
                             {currentMove.type.name}
                           </span>
