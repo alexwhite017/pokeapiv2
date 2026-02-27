@@ -16,10 +16,10 @@ const BasicData = ({ poke, species }) => {
   const genderText =
     species.gender_rate === -1
       ? "Genderless"
-      : `${((species.gender_rate / 8) * 100).toFixed(0)}% F`;
+      : `${((species.gender_rate / 8) * 100).toFixed(0)}% F / ${((1 - species.gender_rate / 8) * 100).toFixed(0)}% M`;
 
   return (
-    <div className={`bg-${type} rounded-2xl overflow-hidden mb-5 md:col-span-1`}>
+    <div className={`w-full bg-${type} rounded-2xl overflow-hidden mb-5 md:col-span-1 md:self-start`}>
       {/* Artwork header */}
       <div className="bg-black/20 px-4 pt-4 pb-3 flex flex-col items-center gap-3">
         <div className="w-full flex justify-between items-center">

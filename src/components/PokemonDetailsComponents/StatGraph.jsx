@@ -14,7 +14,7 @@ const StatGraph = ({ poke }) => {
   const total = poke.stats.reduce((t, s) => t + s.base_stat, 0);
 
   return (
-    <div className="w-full bg-surface-raised rounded-2xl overflow-hidden mb-5">
+    <div className="w-full bg-surface-raised rounded-2xl overflow-hidden mb-5 ring-1 ring-surface-border">
       <div className={`bg-${type} px-4 py-2.5`}>
         <h2 className="font-bold text-lg text-white">Stats</h2>
       </div>

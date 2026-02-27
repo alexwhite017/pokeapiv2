@@ -31,10 +31,10 @@ const DexEntries = ({ species, poke }) => {
 
   return (
     <ContainerSkeleton title="Pokedex Entries" type={type}>
-      <div className="tabs flex gap-2">
+      <div className="tabs flex gap-1.5 overflow-x-auto pb-1 min-w-0">
         {gens.map((gen, index) => (
           <div
-            className={`tab cursor-pointer gen${index + 1} flex-1 rounded-t md:min-h-6 transition-colors ${
+            className={`tab cursor-pointer gen${index + 1} flex-1 shrink-0 min-w-8 rounded-t min-h-6 transition-colors ${
               activeTab === index
                 ? `bg-${type} text-white`
                 : "bg-surface-inset text-text-secondary hover:bg-surface-raised"

@@ -6,6 +6,8 @@ import StatGraph from "./PokemonDetailsComponents/StatGraph";
 import BasicData from "./PokemonDetailsComponents/BasicData";
 import DexEntries from "./PokemonDetailsComponents/DexEntries";
 import LearnSet from "./PokemonDetailsComponents/LearnSet";
+import EvolutionChain from "./PokemonDetailsComponents/EvolutionChain";
+import CatchableLocations from "./PokemonDetailsComponents/CatchableLocations";
 import { pokemonTypes } from "../data/pokemonTypes";
 
 const PokemonNav = ({ currentId, allPokemonData, onNavigate }) => {
@@ -34,18 +36,18 @@ const PokemonNav = ({ currentId, allPokemonData, onNavigate }) => {
       {/* Prev */}
       <button
         onClick={() => hasPrev && onNavigate(prevName)}
-        className={`flex items-center gap-2 transition-opacity ${
+        className={`flex items-center gap-2 min-w-0 transition-opacity ${
           hasPrev ? "hover:opacity-80" : "opacity-40 pointer-events-none"
         }`}
         aria-label={hasPrev ? `Previous: ${prevName}` : "No previous Pokémon"}
       >
-        <span className="text-lg leading-none">←</span>
-        <span className="flex flex-col items-start">
+        <span className="text-lg leading-none shrink-0">←</span>
+        <span className="flex flex-col items-start min-w-0">
           <span className="text-text-muted text-xs uppercase tracking-wide">
             Prev
           </span>
           <span
-            className="font-semibold capitalize"
+            className="font-semibold capitalize truncate max-w-[35vw] sm:max-w-none"
             style={{ color: hasPrev ? getTypeColor(prevId) : "inherit" }}
           >
             {hasPrev ? `#${String(prevId).padStart(3, "0")} ${prevName}` : "—"}
@@ -56,23 +58,23 @@ const PokemonNav = ({ currentId, allPokemonData, onNavigate }) => {
       {/* Next */}
       <button
         onClick={() => hasNext && onNavigate(nextName)}
-        className={`flex items-center gap-2 transition-opacity ${
+        className={`flex items-center gap-2 min-w-0 transition-opacity ${
           hasNext ? "hover:opacity-80" : "opacity-40 pointer-events-none"
         }`}
         aria-label={hasNext ? `Next: ${nextName}` : "No next Pokémon"}
       >
-        <span className="flex flex-col items-end">
+        <span className="flex flex-col items-end min-w-0">
           <span className="text-text-muted text-xs uppercase tracking-wide">
             Next
           </span>
           <span
-            className="font-semibold capitalize"
+            className="font-semibold capitalize truncate max-w-[35vw] sm:max-w-none"
             style={{ color: hasNext ? getTypeColor(nextId) : "inherit" }}
           >
             {hasNext ? `#${String(nextId).padStart(3, "0")} ${nextName}` : "—"}
           </span>
         </span>
-        <span className="text-lg leading-none">→</span>
+        <span className="text-lg leading-none shrink-0">→</span>
       </button>
     </div>
   );
@@ -81,6 +83,7 @@ const PokemonNav = ({ currentId, allPokemonData, onNavigate }) => {
 const PokemonDetails = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonSpeciesData, setPokemonSpeciesData] = useState([]);
+  const [evolutionChainData, setEvolutionChainData] = useState(null);
   const [allPokemonData, setAllPokemonData] = useState([]);
   const [primaryType, setPrimaryType] = useState(null);
 
@@ -95,6 +98,7 @@ const PokemonDetails = () => {
     fetchPokemon("pokemon", pokemon).then((data) => {
       setPokemonData([data[0]]);
       setPokemonSpeciesData([data[1]]);
+      setEvolutionChainData(data[2] || null);
       const type = data[0].types[0].type.name;
       setPrimaryType(type);
     });
@@ -140,29 +144,32 @@ const PokemonDetails = () => {
               />
               {/* Main card */}
               <div
-                className="w-full px-2 sm:px-4 h-auto flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4"
+                className="w-full h-auto flex flex-col gap-4 p-3 sm:p-4 shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4"
                 style={{
                   background: primaryType
                     ? `linear-gradient(160deg, color-mix(in srgb, var(--color-${primaryType}) 20%, var(--color-surface-raised)), var(--color-surface-raised))`
                     : "var(--color-surface-raised)",
                 }}
               >
-                <BasicData poke={poke} species={species} />
+                {/* Left column */}
+                <div className="flex flex-col">
+                  <BasicData poke={poke} species={species} />
+                  <StatGraph poke={poke} />
+                  {evolutionChainData && (
+                    <EvolutionChain
+                      chain={evolutionChainData}
+                      type={poke.types[0].type.name}
+                      currentId={poke.id}
+                      onNavigate={handleNavigate}
+                    />
+                  )}
+                </div>
+                {/* Right column */}
                 <div className="w-full md:col-span-2">
                   <DexEntries species={species} poke={poke} />
+                  <CatchableLocations poke={poke} />
                   <LearnSet poke={poke} type={"level"} />
                   <LearnSet poke={poke} type={"machine"} />
-                  <StatGraph poke={poke} />
-                  <div className="evolutions">
-                    <h2 className="font-bold text-xl text-center text-text-primary mb-2">
-                      Evolutions
-                    </h2>
-                    <div className="bg-surface-raised w-full h-auto p-2 rounded-2xl flex justify-center items-center">
-                      <p className="text-text-primary font-bold">
-                        Evolution data not implemented yet.
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
               {/* Bottom nav */}
