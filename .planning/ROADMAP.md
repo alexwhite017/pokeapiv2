@@ -28,7 +28,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. No `bg-white`, `text-black`, or hardcoded light colors remain anywhere in the component tree
   3. All dynamic Tailwind class patterns (bg/text/border/ring for all 18 types) generate correctly in `vite build` output
   4. Stat bar widths render correctly in production (no silent broken-width bug)
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [x] 01-01-PLAN.md — Dark base (index.css) and design tokens (@theme in App.css)
+- [x] 01-02-PLAN.md — Component dark sweep and stat bar production fix
+- [x] 01-03-PLAN.md — LearnSet gray palette gap closure
 
 ### Phase 2: Grid Cards
 **Goal**: The Pokémon grid communicates each Pokémon's type identity at a glance — type-colored backgrounds, prominent artwork, readable identity information, and a satisfying hover response
@@ -40,7 +45,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Type badges on cards are pill-shaped and consistently styled
   4. Cards lift with scale and shadow on hover
   5. Each card shows its Pokédex number in zero-padded `#NNN` format
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Static type lookup table (pokemonTypes.js) and PokemonCard component
+- [ ] 02-02-PLAN.md — Wire Results.jsx to use PokemonCard; production build verification
 
 ### Phase 3: Detail Page
 **Goal**: The detail page feels immersive and easy to scan — type identity saturates the page, stats are visually informative at a glance, and move tables are clean and readable
@@ -71,6 +80,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-02-27 |
-| 2. Grid Cards | 0/TBD | Not started | - |
+| 2. Grid Cards | 0/2 | Not started | - |
 | 3. Detail Page | 0/TBD | Not started | - |
 | 4. Polish | 0/TBD | Not started | - |
