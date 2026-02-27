@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-02-27T19:27:27.009Z"
+last_updated: "2026-02-27T19:44:42.376Z"
 progress:
-  total_phases: 3
-  completed_phases: 3
-  total_plans: 8
-  completed_plans: 8
+  total_phases: 4
+  completed_phases: 4
+  total_plans: 11
+  completed_plans: 11
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** A visually immersive, dark-themed Pokémon browser where each Pokémon's type identity drives the entire experience — making it feel like a polished, enthusiast-grade Pokédex.
-**Current focus:** Phase 3 — Detail Page (in progress)
+**Current focus:** Phase 4 — Polish (in progress)
 
 ## Current Position
 
-Phase: 3 of 4 (Detail Page)
-Plan: 3 of 4 in current phase
-Status: Plan 03-03 complete
-Last activity: 2026-02-27 — Completed plan 03-03 (Move Table Styling and Badge Harmonization)
+Phase: 4 of 4 (Polish)
+Plan: 1 of 3 in current phase
+Status: Plan 04-01 complete
+Last activity: 2026-02-27 — Completed plan 04-01 (Dex Number Watermark on Grid Cards)
 
-Progress: [██████░░░░] 60%
+Progress: [███████░░░] 70%
 
 ## Performance Metrics
 
@@ -53,6 +53,8 @@ Progress: [██████░░░░] 60%
 | Phase 02-grid-cards P02 | 1 | 2 tasks | 1 file |
 | Phase 03-detail-page P02 | 4 | 2 tasks | 2 files |
 | Phase 03-detail-page P03 | 1 | 2 tasks | 2 files |
+| Phase 04-polish P01 | 2 | 1 task | 1 file |
+| Phase 04-polish P03 | 2 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -83,6 +85,11 @@ Recent decisions affecting current work:
 - [Phase 03-02]: Removed per-row statBackground colors from StatGraph rows — transparent bar track with bg-black/20 is cleaner
 - [Phase 03-03]: rounded-full + px-3 for type badges in move tables and BasicData — px-1 too tight for pill shape at small text size
 - [Phase 03-03]: Damage class badges (physical/special/status) kept as rounded (not rounded-full) — explicitly out of scope per plan
+- [Phase 04-01]: Watermark placed before artwork div in DOM order so normal-flow artwork/info strip paint on top without needing z-index
+- [Phase 04-01]: text-white/15 opacity for watermark — visible design element against all type colors, does not compete with artwork
+- [Phase 04-01]: translate-x-1/4 translate-y-1/4 on watermark span creates partial clip at overflow-hidden card edge for jersey-number aesthetic
+- [Phase 04-polish]: PokemonNav as inline component in same file — no separate file needed for single-use nav widget
+- [Phase 04-polish]: opacity-40 pointer-events-none for edge IDs #001/#1025 — stable layout, no reflow
 
 ### Pending Todos
 
@@ -95,5 +102,5 @@ None — Phase 3 plan 03 complete, DETAIL-04 satisfied.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 03-03-PLAN.md (Move Table Styling and Badge Harmonization)
+Stopped at: Completed 04-01-PLAN.md (Dex Number Watermark on Grid Cards)
 Resume file: None

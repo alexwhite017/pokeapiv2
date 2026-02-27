@@ -31,9 +31,9 @@ Requirements for the UI overhaul. Each maps to roadmap phases.
 
 ### Polish
 
-- [ ] **POLISH-01**: Grid cards display large low-opacity dex number watermark behind artwork
+- [x] **POLISH-01**: Grid cards display large low-opacity dex number watermark behind artwork
 - [ ] **POLISH-02**: Grid shows shimmer skeleton card placeholders during initial load (replacing "Loading..." text)
-- [ ] **POLISH-03**: Detail page has Prev/Next Pokémon navigation arrows using existing loaded data
+- [x] **POLISH-03**: Detail page has Prev/Next Pokémon navigation arrows using existing loaded data
 
 ## v2 Requirements
 
@@ -78,9 +78,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DETAIL-02 | Phase 3 | Complete |
 | DETAIL-03 | Phase 3 | Complete |
 | DETAIL-04 | Phase 3 | Complete |
-| POLISH-01 | Phase 4 | Pending |
+| POLISH-01 | Phase 4 | Complete |
 | POLISH-02 | Phase 4 | Pending |
-| POLISH-03 | Phase 4 | Pending |
+| POLISH-03 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 16 total
