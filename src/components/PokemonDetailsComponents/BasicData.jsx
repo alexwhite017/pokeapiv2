@@ -14,10 +14,10 @@ const BasicData = ({ poke, species }) => {
         className={`bg-${type}-secondary w-full flex gap-1 flex-col rounded `}
       >
         <div className="flex mx-2 mt-2 gap-1">
-          <h2 className="bg-white rounded p-4 flex-4 text-lg text-center font-bold capitalize text-black">
+          <h2 className="bg-surface-raised rounded p-4 flex-4 text-lg text-center font-bold capitalize text-text-primary">
             {poke.name}
           </h2>
-          <h2 className="text-lg text-black bg-white text-center justify-center p-2 font-bold items-center flex rounded flex-1">
+          <h2 className="text-lg text-text-primary bg-surface-raised text-center justify-center p-2 font-bold items-center flex rounded flex-1">
             #{poke.id}
           </h2>
         </div>
@@ -25,7 +25,7 @@ const BasicData = ({ poke, species }) => {
           <div className="tabs text-center mx-2 flex gap-2">
             <div
               className={`tab ${
-                activeTab === 0 ? "bg-white" : " hover:bg-green-400"
+                activeTab === 0 ? "bg-surface-raised" : " hover:bg-surface-inset"
               }  flex-1 bg-[#ACD36C] rounded-t md:min-h-6`}
               onClick={() => setActiveTab(0)}
             >
@@ -33,14 +33,14 @@ const BasicData = ({ poke, species }) => {
             </div>
             <div
               className={`tab ${
-                activeTab === 2 ? "bg-white" : " hover:bg-green-400"
+                activeTab === 2 ? "bg-surface-raised" : " hover:bg-surface-inset"
               }  flex-1 bg-[#ACD36C] rounded-t md:min-h-6`}
               onClick={() => setActiveTab(2)}
             >
               Shiny
             </div>
           </div>
-          <div className="bg-white rounded-b mx-2 mb-2">
+          <div className="bg-surface-raised rounded-b mx-2 mb-2">
             <img
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.id}.png`}
               alt={poke.name}
@@ -62,8 +62,8 @@ const BasicData = ({ poke, species }) => {
       <div
         className={`typing bg-${type}-secondary w-full flex gap-1 flex-col rounded-2xl`}
       >
-        <h2 className="text-center font-bold text-lg text-black">Type</h2>
-        <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-2xl">
+        <h2 className="text-center font-bold text-lg text-text-primary">Type</h2>
+        <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-2xl">
           {poke.types.map((typeInfo, index) => (
             <span
               key={index}
@@ -78,12 +78,12 @@ const BasicData = ({ poke, species }) => {
       <div
         className={`abilities bg-${type}-secondary w-full flex gap-1 flex-col rounded-2xl`}
       >
-        <h2 className="text-center font-bold text-lg text-black">Abilities</h2>
-        <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-2xl">
+        <h2 className="text-center font-bold text-lg text-text-primary">Abilities</h2>
+        <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-2xl">
           {poke.abilities.map((abilityInfo, index) => (
             <span
               key={index}
-              className=" text-black px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize"
+              className=" text-text-primary px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize"
             >
               {abilityInfo.ability.name}{" "}
               {abilityInfo.is_hidden ? " (Hidden Ability)" : ""}
@@ -96,11 +96,11 @@ const BasicData = ({ poke, species }) => {
         <div
           className={`gender bg-${type}-secondary w-full flex flex-1 gap-1 flex-col rounded-2xl`}
         >
-          <h2 className="text-center font-bold text-lg text-black">
+          <h2 className="text-center font-bold text-lg text-text-primary">
             Gender Ratio
           </h2>
-          <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-2xl">
-            <span className="text-black px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
+          <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-2xl">
+            <span className="text-text-primary px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
               {species.gender_rate}?
             </span>
           </div>
@@ -108,11 +108,11 @@ const BasicData = ({ poke, species }) => {
         <div
           className={`catch-rate bg-${type}-secondary w-full flex flex-1 gap-1 flex-col rounded-2xl`}
         >
-          <h2 className="text-center font-bold text-lg text-black">
+          <h2 className="text-center font-bold text-lg text-text-primary">
             Catch Rate
           </h2>
-          <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-2xl">
-            <span className="text-black px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
+          <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-2xl">
+            <span className="text-text-primary px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
               {species.capture_rate}
             </span>
           </div>
@@ -121,17 +121,17 @@ const BasicData = ({ poke, species }) => {
 
       {/* Breeding Section */}
       <div className={`flex flex-col bg-${type}-secondary rounded-2xl`}>
-        <h2 className="text-center font-bold text-lg text-black">Breeding</h2>
+        <h2 className="text-center font-bold text-lg text-text-primary">Breeding</h2>
         <div className="flex">
           <div className="breeding w-full flex gap-1 flex-col  ">
-            <h2 className="text-center font-bold text-lg text-black">
+            <h2 className="text-center font-bold text-lg text-text-primary">
               Egg Groups
             </h2>
-            <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-xl">
+            <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-xl">
               {species.egg_groups.map((eggInfo, index) => (
                 <span
                   key={index}
-                  className=" text-black px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize"
+                  className=" text-text-primary px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize"
                 >
                   {eggInfo.name}
                 </span>
@@ -140,11 +140,11 @@ const BasicData = ({ poke, species }) => {
             </div>
           </div>
           <div className="breeding w-full flex gap-1 flex-col  ">
-            <h2 className="text-center font-bold text-lg text-black">
+            <h2 className="text-center font-bold text-lg text-text-primary">
               Hatch Time
             </h2>
-            <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-xl">
-              <span className="text-black px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
+            <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-xl">
+              <span className="text-text-primary px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
                 {species.hatch_counter} Cycles
               </span>
             </div>
@@ -157,9 +157,9 @@ const BasicData = ({ poke, species }) => {
         <div
           className={`height bg-${type}-secondary w-full flex flex-1 gap-1 flex-col rounded-2xl`}
         >
-          <h2 className="text-center font-bold text-lg text-black">Height</h2>
-          <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-2xl">
-            <span className="text-black px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
+          <h2 className="text-center font-bold text-lg text-text-primary">Height</h2>
+          <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-2xl">
+            <span className="text-text-primary px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
               {poke.height / 10} m
             </span>
           </div>
@@ -167,9 +167,9 @@ const BasicData = ({ poke, species }) => {
         <div
           className={`weight bg-${type}-secondary w-full flex flex-1 gap-1 flex-col rounded-2xl`}
         >
-          <h2 className="text-center font-bold text-lg text-black">Weight</h2>
-          <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-2xl">
-            <span className="text-black px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
+          <h2 className="text-center font-bold text-lg text-text-primary">Weight</h2>
+          <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-2xl">
+            <span className="text-text-primary px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
               {poke.weight / 10} kg
             </span>
           </div>
@@ -179,11 +179,11 @@ const BasicData = ({ poke, species }) => {
         <div
           className={`experience bg-${type}-secondary w-full flex gap-1 flex-col rounded-2xl`}
         >
-          <h2 className="text-center font-bold text-lg text-black">
+          <h2 className="text-center font-bold text-lg text-text-primary">
             EXP Yield
           </h2>
-          <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-2xl">
-            <span className="text-black px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
+          <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-2xl">
+            <span className="text-text-primary px-1 rounded text-sm my-2 mx-1 min-w-15 text-center">
               {poke.base_experience}
             </span>
           </div>
@@ -191,11 +191,11 @@ const BasicData = ({ poke, species }) => {
         <div
           className={`growth bg-${type}-secondary w-full flex gap-1 flex-col rounded-2xl`}
         >
-          <h2 className="text-center font-bold text-lg text-black">
+          <h2 className="text-center font-bold text-lg text-text-primary">
             Growth Rate
           </h2>
-          <div className="flex bg-white justify-center items-center mx-1 mb-1 rounded-2xl">
-            <span className="text-black px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize">
+          <div className="flex bg-surface-raised justify-center items-center mx-1 mb-1 rounded-2xl">
+            <span className="text-text-primary px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize">
               {species.growth_rate.name.replace("-", " ")}
             </span>
           </div>
@@ -207,9 +207,9 @@ const BasicData = ({ poke, species }) => {
       <div
         className={`evs bg-${type}-secondary w-full flex gap-1 flex-col rounded-2xl`}
       >
-        <h2 className="text-center font-bold text-lg text-black">EVs</h2>
-        <div className="flex flex-col bg-white justify-center items-center mx-1 mb-1 rounded-2xl">
-          <h2 className="text-black">
+        <h2 className="text-center font-bold text-lg text-text-primary">EVs</h2>
+        <div className="flex flex-col bg-surface-raised justify-center items-center mx-1 mb-1 rounded-2xl">
+          <h2 className="text-text-primary">
             Total: {poke.stats.reduce((total, stat) => total + stat.effort, 0)}
           </h2>
           <div className="flex w-full gap-1 px-2">
@@ -218,7 +218,7 @@ const BasicData = ({ poke, species }) => {
                 key={index}
                 className={`${
                   statColors[statInfo.stat.name]
-                } text-black rounded text-sm my-2 w-1/6 text-center flex flex-col capitalize`}
+                } text-text-primary rounded text-sm my-2 w-1/6 text-center flex flex-col capitalize`}
               >
                 <p>{statInfo.effort}</p> <p>{evNames[statInfo.stat.name]}</p>
               </div>

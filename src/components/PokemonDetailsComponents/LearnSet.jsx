@@ -14,7 +14,7 @@ const LearnSet = ({ poke, type }) => {
 
   for (let i = 1; i <= 9; i++) {
     gens.push(
-      <h4 className="text-black font-bold text-sm text-center">{i}</h4>
+      <h4 className="text-text-primary font-bold text-sm text-center">{i}</h4>
     );
   }
 
@@ -70,7 +70,7 @@ const LearnSet = ({ poke, type }) => {
       <ContainerSkeleton title="Technical Machines" type={pokeType}>
         <select
           id="gen-select"
-          className="mb-3 p-1 text-center rounded text-black w-1/2 mx-auto bg-white"
+          className="mb-3 p-1 text-center rounded text-text-primary w-1/2 mx-auto bg-surface-raised"
           onChange={(e) => {
             e.preventDefault();
             setSelectedGen(e.target.value);
@@ -99,9 +99,9 @@ const LearnSet = ({ poke, type }) => {
         </select>
 
         <div className="mx-1 mb-1 max-h-100 overflow-y-auto overflow-x-auto">
-          <table className="w-full bg-white mb-2">
+          <table className="w-full bg-surface-raised mb-2">
             <thead className="bg-[#80B9EF] sticky top-0">
-              <tr className="text-black font-bold text-center">
+              <tr className="text-text-primary font-bold text-center">
                 <th className="px-3 border border-gray-300">#</th>
                 <th className="px-3 border border-gray-300">Move</th>
                 <th className="px-3 border border-gray-300">Type</th>
@@ -114,13 +114,13 @@ const LearnSet = ({ poke, type }) => {
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan="7" className="text-center text-black">
+                  <td colSpan="7" className="text-center text-text-primary">
                     Loading...
                   </td>
                 </tr>
               ) : !tmDetails.length ? (
                 <tr>
-                  <td colSpan="7" className="text-center text-black font-bold">
+                  <td colSpan="7" className="text-center text-text-primary font-bold">
                     No moves available for this game.
                   </td>
                 </tr>
@@ -132,7 +132,7 @@ const LearnSet = ({ poke, type }) => {
                   return (
                     <tr
                       key={index}
-                      className="text-center text-black even:bg-gray-200 odd:bg-gray-100"
+                      className="text-center text-text-primary even:bg-gray-200 odd:bg-gray-100"
                     >
                       <td className="p-1 border border-gray-300 uppercase">
                         {moveEntry.item.name ? moveEntry.item.name : "???"}
@@ -197,7 +197,7 @@ const LearnSet = ({ poke, type }) => {
       <ContainerSkeleton title="Level-Up Moves" type={pokeType}>
         <select
           id="gen-select"
-          className="mb-3 p-1 text-center rounded text-black w-1/2 mx-auto bg-white"
+          className="mb-3 p-1 text-center rounded text-text-primary w-1/2 mx-auto bg-surface-raised"
           onChange={(e) => {
             e.preventDefault();
             setSelectedGen(e.target.value);
@@ -226,9 +226,9 @@ const LearnSet = ({ poke, type }) => {
         </select>
 
         <div className="mx-1 mb-1 max-h-100 overflow-y-auto overflow-x-auto">
-          <table className=" w-full bg-white mb-2">
+          <table className=" w-full bg-surface-raised mb-2">
             <thead className="bg-[#80B9EF] sticky top-0">
-              <tr className="text-black font-bold text-center">
+              <tr className="text-text-primary font-bold text-center">
                 <th className="px-3 border border-gray-300">Level</th>
                 <th className="px-3 border border-gray-300">Move</th>
                 <th className="px-3 border border-gray-300">Type</th>
@@ -241,13 +241,13 @@ const LearnSet = ({ poke, type }) => {
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan="7" className="text-center text-black">
+                  <td colSpan="7" className="text-center text-text-primary">
                     Loading...
                   </td>
                 </tr>
               ) : !moveDetails.length ? (
                 <tr>
-                  <td colSpan="7" className="text-center text-black font-bold">
+                  <td colSpan="7" className="text-center text-text-primary font-bold">
                     No moves available for this game.
                   </td>
                 </tr>
@@ -259,7 +259,7 @@ const LearnSet = ({ poke, type }) => {
                   return (
                     <tr
                       key={index}
-                      className="text-center text-black even:bg-gray-200 odd:bg-gray-100"
+                      className="text-center text-text-primary even:bg-gray-200 odd:bg-gray-100"
                     >
                       <td className="p-1 border border-gray-300">
                         {

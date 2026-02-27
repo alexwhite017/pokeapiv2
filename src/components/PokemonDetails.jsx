@@ -37,7 +37,7 @@ const PokemonDetails = () => {
           pokemonSpeciesData.map((species) => (
             <div
               key={poke.id}
-              className=" w-full mx-5 h-auto bg-white flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4"
+              className=" w-full mx-5 h-auto bg-surface-raised flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4"
             >
               <BasicData poke={poke} species={species} />
               <div className="w-full md:col-span-2">
@@ -46,11 +46,11 @@ const PokemonDetails = () => {
                 <LearnSet poke={poke} type={"machine"} />
                 <StatGraph poke={poke} />
                 <div className="evolutions">
-                  <h2 className="font-bold text-xl text-center text-black mb-2">
+                  <h2 className="font-bold text-xl text-center text-text-primary mb-2">
                     Evolutions
                   </h2>
-                  <div className="bg-white w-full h-auto p-2 rounded-2xl flex justify-center items-center">
-                    <p className="text-black font-bold">
+                  <div className="bg-surface-raised w-full h-auto p-2 rounded-2xl flex justify-center items-center">
+                    <p className="text-text-primary font-bold">
                       Evolution data not implemented yet.
                     </p>
                   </div>

@@ -78,10 +78,10 @@ const Results = () => {
                           {poke.name}
                         </h2>
 
-                        <div className="text-sm text-gray-600 hidden sm:block">
+                        <div className="text-sm text-text-secondary hidden sm:block">
                           Dex#: {poke.url.split("/")[6]}
                         </div>
-                        <span className="flex font-bold items-center text-gray-600 sm:hidden">
+                        <span className="flex font-bold items-center text-text-secondary sm:hidden">
                           #{poke.url.split("/")[6]}
                         </span>
                       </div>
