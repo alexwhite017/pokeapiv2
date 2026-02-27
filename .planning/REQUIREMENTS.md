@@ -24,9 +24,9 @@ Requirements for the UI overhaul. Each maps to roadmap phases.
 
 ### Detail Page
 
-- [ ] **DETAIL-01**: Detail page background and accents reflect the Pokémon's primary type color throughout
-- [ ] **DETAIL-02**: Stat bars use quality-based color thresholds (red <30, orange 30–59, yellow 60–89, lime 90–119, green 120–149, teal 150+)
-- [ ] **DETAIL-03**: Stat bars have rounded corners, consistent height, and clear labels with numeric values and adequate row spacing
+- [x] **DETAIL-01**: Detail page background and accents reflect the Pokémon's primary type color throughout
+- [x] **DETAIL-02**: Stat bars use quality-based color thresholds (red <30, orange 30–59, yellow 60–89, lime 90–119, green 120–149, teal 150+)
+- [x] **DETAIL-03**: Stat bars have rounded corners, consistent height, and clear labels with numeric values and adequate row spacing
 - [ ] **DETAIL-04**: Move tables use dark rows, type-accented header, and pill badges in type cells
 
 ### Polish
@@ -74,9 +74,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CARD-03 | Phase 2 | Complete |
 | CARD-04 | Phase 2 | Complete |
 | CARD-05 | Phase 2 | Complete |
-| DETAIL-01 | Phase 3 | Pending |
-| DETAIL-02 | Phase 3 | Pending |
-| DETAIL-03 | Phase 3 | Pending |
+| DETAIL-01 | Phase 3 | Complete |
+| DETAIL-02 | Phase 3 | Complete |
+| DETAIL-03 | Phase 3 | Complete |
 | DETAIL-04 | Phase 3 | Pending |
 | POLISH-01 | Phase 4 | Pending |
 | POLISH-02 | Phase 4 | Pending |
