@@ -11,8 +11,10 @@ const PokemonDetails = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonSpeciesData, setPokemonSpeciesData] = useState([]);
   const [allPokemonData, setAllPokemonData] = useState([]);
+  const [primaryType, setPrimaryType] = useState(null);
 
   const { pokemon } = useParams();
+
   useEffect(() => {
     fetchPokemon("pokemon", "").then((data) => {
       setAllPokemonData(data.results);
@@ -21,11 +23,35 @@ const PokemonDetails = () => {
     fetchPokemon("pokemon", pokemon).then((data) => {
       setPokemonData([data[0]]);
       setPokemonSpeciesData([data[1]]);
+      const type = data[0].types[0].type.name;
+      setPrimaryType(type);
     });
   }, [pokemon]);
 
+  // Signal the active type to NavBar via CSS custom property on :root
+  useEffect(() => {
+    if (primaryType) {
+      document.documentElement.style.setProperty(
+        "--active-type-color",
+        `var(--color-${primaryType})`
+      );
+    } else {
+      document.documentElement.style.removeProperty("--active-type-color");
+    }
+    return () => {
+      document.documentElement.style.removeProperty("--active-type-color");
+    };
+  }, [primaryType]);
+
   return (
-    <div className="flex flex-col justify-center items-center mt-20">
+    <div
+      className="w-full min-h-screen flex flex-col items-center pt-20"
+      style={{
+        background: primaryType
+          ? `linear-gradient(to bottom, var(--color-${primaryType}), #18181b)`
+          : "#18181b",
+      }}
+    >
       <SearchBar
         pokemon={pokemon}
         page="details"
@@ -37,7 +63,7 @@ const PokemonDetails = () => {
           pokemonSpeciesData.map((species) => (
             <div
               key={poke.id}
-              className=" w-full mx-5 h-auto bg-surface-raised flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4"
+              className="w-full mx-5 h-auto bg-black/40 flex flex-col p-4 items-start shadow-2xl rounded-2xl md:grid md:grid-cols-3 md:gap-4"
             >
               <BasicData poke={poke} species={species} />
               <div className="w-full md:col-span-2">
