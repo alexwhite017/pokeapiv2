@@ -1,5 +1,6 @@
 import SearchBar from "./SearchBar";
 import PokemonCard from "./PokemonCard";
+import SkeletonCard from "./SkeletonCard";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import fetchPokemon from "../functions/fetchPokemon";
@@ -36,7 +37,11 @@ const Results = () => {
           typing={typing}
           setSearchQuery={setSearchQuery}
         />
-        <div className="text-xl font-bold text-text-primary">Loading...</div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 w-full px-4 mt-4">
+          {Array.from({ length: 24 }).map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
       </div>
     );
   }
