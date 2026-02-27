@@ -67,7 +67,7 @@ const BasicData = ({ poke, species }) => {
           {poke.types.map((typeInfo, index) => (
             <span
               key={index}
-              className={`bg-${typeInfo.type.name} text-white font-bold px-1 rounded text-sm my-2 mx-1 min-w-15 text-center capitalize`}
+              className={`bg-${typeInfo.type.name} text-white font-bold px-3 rounded-full text-sm my-2 mx-1 min-w-15 text-center capitalize`}
             >
               {typeInfo.type.name}
             </span>
