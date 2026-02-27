@@ -1,9 +1,15 @@
-import { statColors } from "../../data/statColors";
-import { statBackground } from "../../data/statBackground";
+import { useState, useEffect } from "react";
+import { getStatBarColor } from "../../data/statColors";
 import { statNames } from "../../data/statNames";
 
 const StatGraph = ({ poke }) => {
   const type = poke.types[0].type.name;
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimated(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div
@@ -17,30 +23,21 @@ const StatGraph = ({ poke }) => {
         </div>
         <div className={`bg-${type}-secondary`}>
           {poke.stats.map((stat, index) => (
-            <div
-              key={index}
-              className={`flex h-6 border-${type} border-y-1 ${
-                statBackground[stat.stat.name]
-              }`}
-            >
-              <div
-                className={`statName flex flex-1.5 sm:flex-1 w-[35%] border-${type} border-r-2 px-2 text-text-primary`}
-              >
-                <div className="flex-2 justify-start font-bold text-sm">
-                  {`${statNames[stat.stat.name]}`}:
-                </div>
-                <div className="flex-1 text-right text-sm">
-                  <p>{stat.base_stat}</p>
-                </div>
+            <div key={index} className="flex items-center py-2 px-2 gap-3">
+              <div className="w-[30%] flex justify-between text-text-primary text-sm">
+                <span className="font-semibold">{statNames[stat.stat.name]}</span>
+                <span className="text-text-secondary">{stat.base_stat}</span>
               </div>
-
-              <div className="flex-3">
+              <div className="flex-1 bg-black/20 rounded-full h-3">
                 <div
-                  className={`${
-                    statColors[stat.stat.name]
-                  } my-[1px] border-1 rounded border-surface-border ml-0.5 h-5`}
-                  style={{ width: `${((stat.base_stat / 255) * 100).toFixed(0)}%` }}
-                ></div>
+                  className={`${getStatBarColor(stat.base_stat)} rounded-full h-3`}
+                  style={{
+                    width: animated
+                      ? `${((stat.base_stat / 255) * 100).toFixed(0)}%`
+                      : "0%",
+                    transition: "width 300ms ease-out",
+                  }}
+                />
               </div>
             </div>
           ))}
