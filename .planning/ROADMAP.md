@@ -12,7 +12,7 @@ Transform an existing React SPA from a generic white-background data browser int
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Establish dark global theme, design tokens, and fix pre-existing production bugs
+- [x] **Phase 1: Foundation** - Establish dark global theme, design tokens, and fix pre-existing production bugs (completed 2026-02-27)
 - [ ] **Phase 2: Grid Cards** - Restyle Pokémon cards with type-colored backgrounds, artwork, and hover states
 - [ ] **Phase 3: Detail Page** - Apply type-color theming, polished stat bars, and dark move tables throughout the detail page
 - [ ] **Phase 4: Polish** - Add watermark, skeleton loading, and Prev/Next navigation to elevate the experience
@@ -70,7 +70,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 1/TBD | In progress | - |
+| 1. Foundation | 2/2 | Complete   | 2026-02-27 |
 | 2. Grid Cards | 0/TBD | Not started | - |
 | 3. Detail Page | 0/TBD | Not started | - |
 | 4. Polish | 0/TBD | Not started | - |
