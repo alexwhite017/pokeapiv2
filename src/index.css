@@ -3,7 +3,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  background-color: white;
+  background-color: #18181b; /* zinc-900 — dark base; was: white */
+  color: #f4f4f5;            /* zinc-100 — off-white base text */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
