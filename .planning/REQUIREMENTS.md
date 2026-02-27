@@ -16,11 +16,11 @@ Requirements for the UI overhaul. Each maps to roadmap phases.
 
 ### Grid Cards
 
-- [ ] **CARD-01**: Pokémon cards display full type-colored background matching the Pokémon's primary type
-- [ ] **CARD-02**: Grid cards show official artwork (not pixel sprite) as the visual hero
-- [ ] **CARD-03**: Type badges on cards are pill-shaped (`rounded-full`) with consistent padding
-- [ ] **CARD-04**: Cards lift on hover with scale + shadow effect (`hover:scale-[1.03] hover:shadow-2xl`)
-- [ ] **CARD-05**: Each Pokémon card displays its own Pokédex number in `#NNN` format (zero-padded to 3 digits — e.g., Bulbasaur shows `#001`, Mewtwo shows `#150`)
+- [x] **CARD-01**: Pokémon cards display full type-colored background matching the Pokémon's primary type
+- [x] **CARD-02**: Grid cards show official artwork (not pixel sprite) as the visual hero
+- [x] **CARD-03**: Type badges on cards are pill-shaped (`rounded-full`) with consistent padding
+- [x] **CARD-04**: Cards lift on hover with scale + shadow effect (`hover:scale-[1.03] hover:shadow-2xl`)
+- [x] **CARD-05**: Each Pokémon card displays its own Pokédex number in `#NNN` format (zero-padded to 3 digits — e.g., Bulbasaur shows `#001`, Mewtwo shows `#150`)
 
 ### Detail Page
 
@@ -69,11 +69,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUND-02 | Phase 1 | Complete |
 | FOUND-03 | Phase 1 | Complete |
 | FOUND-04 | Phase 1 | Complete |
-| CARD-01 | Phase 2 | Pending |
-| CARD-02 | Phase 2 | Pending |
-| CARD-03 | Phase 2 | Pending |
-| CARD-04 | Phase 2 | Pending |
-| CARD-05 | Phase 2 | Pending |
+| CARD-01 | Phase 2 | Complete |
+| CARD-02 | Phase 2 | Complete |
+| CARD-03 | Phase 2 | Complete |
+| CARD-04 | Phase 2 | Complete |
+| CARD-05 | Phase 2 | Complete |
 | DETAIL-01 | Phase 3 | Pending |
 | DETAIL-02 | Phase 3 | Pending |
 | DETAIL-03 | Phase 3 | Pending |

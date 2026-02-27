@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-02-27T18:22:24.135Z"
+last_updated: "2026-02-27T18:50:56.631Z"
 progress:
-  total_phases: 1
+  total_phases: 2
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 5
+  completed_plans: 4
 ---
 
 # Project State
@@ -18,14 +18,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** A visually immersive, dark-themed Pokémon browser where each Pokémon's type identity drives the entire experience — making it feel like a polished, enthusiast-grade Pokédex.
-**Current focus:** Phase 1 — Foundation
+**Current focus:** Phase 2 — Grid Cards
 
 ## Current Position
 
-Phase: 1 of 4 (Foundation)
-Plan: 3 of TBD in current phase
+Phase: 2 of 4 (Grid Cards)
+Plan: 1 of TBD in current phase
 Status: In progress
-Last activity: 2026-02-27 — Completed plan 01-03 (LearnSet Gray Palette Gap Closure)
+Last activity: 2026-02-27 — Completed plan 02-01 (PokemonCard and Type Lookup Table)
 
 Progress: [██░░░░░░░░] 10%
 
@@ -47,6 +47,7 @@ Progress: [██░░░░░░░░] 10%
 - Trend: —
 
 *Updated after each plan completion*
+| Phase 02-grid-cards P01 | 10 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -64,6 +65,9 @@ Recent decisions affecting current work:
 - [01-02]: Inline style for dynamic widths — use style={{ width: '...' }} instead of Tailwind JIT template literals for runtime-computed values
 - [01-02]: SearchBar.jsx out of scope for 01-02 color sweep — deferred to future plan
 - [01-03]: Dark alternating table rows use even:bg-surface-inset / odd:bg-surface-raised (zinc-700/zinc-800 two-tier stripe)
+- [Phase 02-01]: Static pokemonTypes.js lookup over API fetching — zero additional API calls, instant type-color rendering
+- [Phase 02-01]: Inline style for gradient with CSS custom properties (var(--color-{type})) avoids Tailwind JIT purge
+- [Phase 02-01]: text-white universally on type badges resolves Electric/Ground/Ice bright background contrast concern
 
 ### Pending Todos
 
@@ -71,11 +75,11 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Phase 3 readiness]: Confirm whether type-colored grid cards require batch-fetching type data from API, or whether dark-surface cards (type color on detail page only) is acceptable. Research flags this as a product decision needed before Phase 2 begins.
-- [Phase 2]: TypeBadge needs a per-type text color audit (Electric, Ground, Ice are bright and need dark text on type-colored backgrounds).
+- [RESOLVED by 02-01]: Type-colored grid cards use static pokemonTypes.js lookup — no batch API calls needed.
+- [RESOLVED by 02-01]: Electric/Ground/Ice badge contrast resolved — text-white universal on type-color badge backgrounds.
 
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 01-03-PLAN.md (LearnSet Gray Palette Gap Closure)
+Stopped at: Completed 02-01-PLAN.md (PokemonCard and Type Lookup Table)
 Resume file: None
