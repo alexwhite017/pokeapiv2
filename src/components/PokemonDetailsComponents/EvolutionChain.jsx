@@ -46,7 +46,7 @@ const EvolutionChain = ({ chain, type, currentId, onNavigate }) => {
   const stages = flattenChain(chain.chain);
 
   return (
-    <div className="w-full bg-surface-raised rounded-2xl overflow-hidden mb-5 ring-1 ring-surface-border">
+    <div className="w-full bg-surface-raised rounded-2xl overflow-hidden ring-1 ring-surface-border">
       <div className={`bg-${type} px-4 py-2.5`}>
         <h2 className="font-bold text-lg text-white">Evolution Chain</h2>
       </div>
