@@ -8,6 +8,8 @@ const lightVersions = new Set([
   "x", "y", "heartgold", "soulsilver", "lets-go-pikachu", "lets-go-eevee",
 ]);
 
+const GEN_LABELS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+
 const CatchableLocations = ({ poke }) => {
   const [encounters, setEncounters] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,81 +26,82 @@ const CatchableLocations = ({ poke }) => {
       });
   }, [poke.id]);
 
-  const activeVersions = genRanges[activeTab];
-
   const filteredEncounters = encounters
     .map((enc) => ({
       ...enc,
       version_details: enc.version_details.filter((vd) =>
-        activeVersions.includes(vd.version.name)
+        genRanges[activeTab].includes(vd.version.name)
       ),
     }))
     .filter((enc) => enc.version_details.length > 0);
 
   return (
     <ContainerSkeleton title="Catchable Locations" type={type}>
-      <div className="tabs flex gap-1.5 overflow-x-auto pb-1 min-w-0">
-        {genRanges.map((_, index) => (
-          <div
+      <div className="flex gap-1 overflow-x-auto pb-1 mb-3">
+        {GEN_LABELS.map((label, index) => (
+          <button
             key={index}
-            className={`tab cursor-pointer flex-1 shrink-0 min-w-8 rounded-t min-h-6 transition-colors ${
+            type="button"
+            onClick={() => setActiveTab(index)}
+            className={`flex-1 shrink-0 min-w-8 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
               activeTab === index
                 ? `bg-${type} text-white`
-                : "bg-surface-inset text-text-secondary hover:bg-surface-raised"
+                : "bg-surface-inset text-text-secondary hover:bg-surface-border"
             }`}
-            onClick={() => setActiveTab(index)}
           >
-            <h4 className="text-text-primary font-bold text-sm text-center">
-              {index + 1}
-            </h4>
-          </div>
+            {label}
+          </button>
         ))}
       </div>
-      <div className="bg-surface-inset py-2 rounded-b-xl">
+
+      <div className="max-h-72 overflow-y-auto flex flex-col gap-2">
         {loading ? (
-          <p className="text-text-secondary text-sm text-center py-2">Loading...</p>
+          <p className="text-text-muted text-sm text-center py-6">Loading...</p>
         ) : filteredEncounters.length === 0 ? (
-          <p className="text-text-secondary text-sm text-center py-2">
+          <p className="text-text-muted text-sm text-center py-6">
             Not found in the wild in this generation.
           </p>
         ) : (
-          <div className="flex flex-col gap-2 max-h-72 overflow-y-auto px-2">
-            {filteredEncounters.map((enc, i) => (
-              <div key={i} className="bg-surface-raised rounded-xl p-2">
-                <p className="text-text-primary text-xs font-semibold mb-1.5 capitalize">
-                  {enc.location_area.name.replace(/-/g, " ")}
-                </p>
-                <div className="flex flex-col gap-1">
-                  {enc.version_details.map((vd, j) => {
-                    const minLevel = Math.min(
-                      ...vd.encounter_details.map((e) => e.min_level)
-                    );
-                    const maxLevel = Math.max(
-                      ...vd.encounter_details.map((e) => e.max_level)
-                    );
-                    const method =
-                      vd.encounter_details[0]?.method?.name?.replace(/-/g, " ") ?? "?";
-                    return (
-                      <div key={j} className="flex items-center gap-1.5">
-                        <span
-                          className={`${gameColors[vd.version.name] ?? "bg-surface-border"} ${
-                            lightVersions.has(vd.version.name) ? "text-black" : "text-white"
-                          } text-[10px] font-semibold px-1.5 py-0.5 rounded capitalize shrink-0`}
-                        >
-                          {vd.version.name.replace(/-/g, " ")}
-                        </span>
-                        <span className="text-text-muted text-[10px] capitalize">
-                          {method} · Lv.{" "}
-                          {minLevel === maxLevel ? minLevel : `${minLevel}–${maxLevel}`} ·{" "}
-                          {vd.max_chance}%
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
+          filteredEncounters.map((enc, i) => (
+            <div key={i} className="bg-surface-inset rounded-xl p-3">
+              <p className="text-text-primary text-sm font-semibold capitalize mb-2">
+                {enc.location_area.name.replace(/-/g, " ")}
+              </p>
+              <div className="flex flex-col gap-1.5">
+                {enc.version_details.map((vd, j) => {
+                  const minLevel = Math.min(
+                    ...vd.encounter_details.map((e) => e.min_level)
+                  );
+                  const maxLevel = Math.max(
+                    ...vd.encounter_details.map((e) => e.max_level)
+                  );
+                  const method =
+                    vd.encounter_details[0]?.method?.name?.replace(/-/g, " ") ?? "?";
+                  return (
+                    <div key={j} className="flex items-center gap-2 flex-wrap">
+                      <span
+                        className={`${gameColors[vd.version.name] ?? "bg-surface-border"} ${
+                          lightVersions.has(vd.version.name) ? "text-black" : "text-white"
+                        } text-[10px] font-semibold px-2 py-0.5 rounded-lg capitalize shrink-0`}
+                      >
+                        {vd.version.name.replace(/-/g, " ")}
+                      </span>
+                      <span className="text-text-secondary text-xs capitalize">
+                        {method}
+                      </span>
+                      <span className="text-text-muted text-xs tabular-nums">
+                        Lv.{" "}
+                        {minLevel === maxLevel ? minLevel : `${minLevel}–${maxLevel}`}
+                      </span>
+                      <span className="text-text-muted text-xs tabular-nums">
+                        {vd.max_chance}% chance
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
-          </div>
+            </div>
+          ))
         )}
       </div>
     </ContainerSkeleton>

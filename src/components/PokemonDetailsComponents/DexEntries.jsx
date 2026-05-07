@@ -3,79 +3,69 @@ import { gameColors } from "../../data/gameColors";
 import { genRanges } from "../../data/genRanges";
 import ContainerSkeleton from "../containerSkeleton";
 
+const lightVersions = new Set([
+  "white", "white-2", "gold", "silver", "crystal", "yellow",
+  "x", "y", "heartgold", "soulsilver", "lets-go-pikachu", "lets-go-eevee",
+]);
+
+const GEN_LABELS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+
 const DexEntries = ({ species, poke }) => {
   const type = poke.types[0].type.name;
+  const [activeTab, setActiveTab] = useState(0);
 
-  const gens = [];
-
-  const [activeTab, setActiveTab] = useState(0); // Default to Gen 1
-
-  let activeGenEntries = getActiveGenEntries();
-
-  for (let i = 1; i <= 9; i++) {
-    gens.push(
-      <h4 className="text-text-primary font-bold text-sm text-center">{i}</h4>
-    );
-  }
-
-  function getActiveGenEntries() {
-    if (!species || !species.flavor_text_entries) return [];
-
-    const activeGenVersions = genRanges[activeTab];
+  const activeGenEntries = (() => {
+    if (!species?.flavor_text_entries) return [];
     return species.flavor_text_entries.filter(
       (entry) =>
         entry.language.name === "en" &&
-        activeGenVersions.includes(entry.version.name)
+        genRanges[activeTab].includes(entry.version.name)
     );
-  }
+  })();
 
   return (
-    <ContainerSkeleton title="Pokedex Entries" type={type}>
-      <div className="tabs flex gap-1.5 overflow-x-auto pb-1 min-w-0">
-        {gens.map((gen, index) => (
-          <div
-            className={`tab cursor-pointer gen${index + 1} flex-1 shrink-0 min-w-8 rounded-t min-h-6 transition-colors ${
+    <ContainerSkeleton title="Pokédex Entries" type={type}>
+      <div className="flex gap-1 overflow-x-auto pb-1 mb-3">
+        {GEN_LABELS.map((label, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => setActiveTab(index)}
+            className={`flex-1 shrink-0 min-w-8 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
               activeTab === index
                 ? `bg-${type} text-white`
-                : "bg-surface-inset text-text-secondary hover:bg-surface-raised"
+                : "bg-surface-inset text-text-secondary hover:bg-surface-border"
             }`}
-            key={index}
-            onClick={() => setActiveTab(index)}
           >
-            {gen}
-          </div>
+            {label}
+          </button>
         ))}
       </div>
-      <div className="bg-surface-inset py-2 rounded-b-xl">
-        <div className="dex-entries flex flex-col bg-surface-raised p-2 rounded-2xl mb-5 mx-1">
-          {activeGenEntries.length === 0 ? (
-            <p className="text-text-primary text-center font-bold">
-              No entries available for this generation.
-            </p>
-          ) : (
-            activeGenEntries.map((entry, index) => (
-              <div className="flex gap-1 mb-1" key={index}>
-                <h3
-                  className={`${
-                    entry.version.name === "black" ||
-                    entry.version.name === "black-2"
-                      ? "text-white"
-                      : "text-text-primary"
-                  } font-bold flex justify-center items-center flex-1 min-w-20 text-center ${
-                    gameColors[entry.version.name] || "bg-surface-inset"
-                  } rounded-2xl capitalize text-sm md:text-base md:min-w-22`}
-                >
-                  {entry.version.name.replace(/-/g, " ")}
-                </h3>
-                <p className="text-text-primary p-1 border-1 rounded flex-6 border-surface-border">
-                  {entry.flavor_text.replace(/\f/g, " ")}
-                </p>
-              </div>
-            ))
-          )}
-        </div>
+
+      <div className="flex flex-col gap-2 max-h-72 overflow-y-auto">
+        {activeGenEntries.length === 0 ? (
+          <p className="text-text-muted text-sm text-center py-6">
+            No entries for this generation.
+          </p>
+        ) : (
+          activeGenEntries.map((entry, index) => (
+            <div key={index} className="bg-surface-inset rounded-xl p-3 flex gap-3">
+              <span
+                className={`${gameColors[entry.version.name] ?? "bg-surface-border"} ${
+                  lightVersions.has(entry.version.name) ? "text-black" : "text-white"
+                } text-[10px] font-bold px-2.5 py-1 rounded-lg capitalize shrink-0 self-start leading-4`}
+              >
+                {entry.version.name.replace(/-/g, " ")}
+              </span>
+              <p className="text-text-primary text-sm leading-relaxed">
+                {entry.flavor_text.replace(/\f/g, " ")}
+              </p>
+            </div>
+          ))
+        )}
       </div>
     </ContainerSkeleton>
   );
 };
+
 export default DexEntries;
